@@ -1,0 +1,32 @@
+*{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+.certificate{
+    width: 815px;
+    height: 1056px;
+    background-color: white;
+    padding-inline: 95px;
+    padding-block: 80px;
+    font-size: 16px;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 22px;
+}
+.hero1{
+    position: absolute;
+    top: 10%;
+    left: 19.5%;
+ display: flex;
+ height: 180%;
+ width: 80%;
+ justify-content: center;
+ align-items: center ;  
+ background-color: rgb(128, 128, 128, 75%);
+display: none;
+}
+p{text-align: center;}
+
+#punong,u{font-size: 24px; font-weight: 700; font-family: 'Inria Serif', serif;}
+#front{text-align: start; font-size: 15px;}

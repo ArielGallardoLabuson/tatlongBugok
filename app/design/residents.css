@@ -1,0 +1,115 @@
+table {
+    width: 100%;
+    border-radius: 10px;
+    background-color: rgb(56, 52, 52);
+
+}
+
+table,
+tr,
+th,
+td {
+    border-collapse: collapse;
+    text-align: center;
+}
+tr{
+    border: 1px solid rgb(202, 189, 189);
+}
+th {
+    height: 50px;
+    color: rgb(211, 205, 205);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+td {
+    height: 40px;
+    font-weight: 700;
+    font-size: 16px;
+    background-color: white;
+    color: rgb(105, 101, 101);
+    border-inline: 1px solid rgb(202, 189, 189);
+}
+
+.residents {
+    width: 97%;
+    height: 75%;
+    border: 1px solid rgb(202, 189, 189);
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+}
+
+button {
+    width: 60px;
+    height: 30px;
+    border: none;
+    border-inline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    font-weight: 700;
+}
+
+input {
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.resaddandsearch {
+    width: 100%;
+    padding-inline: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.resadd {
+    background-color: rgb(45, 165, 165);
+    width: 100px;
+    height: 40px;
+}
+.addbox{
+    display: flex;
+    gap: 15px;
+
+    align-items: center;
+}
+.resdownload {
+    background-color: rgb(45, 165, 165);
+    width: 100px;
+    height: 40px;
+}
+
+#resedit {
+    background-color: rgb(45, 165, 165);
+}
+
+#ressearch {
+    background-color: rgb(45, 165, 165);
+}
+
+#resarchive {
+    background-color: rgb(204, 30, 30);
+}
+
+select{
+
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    color: white;
+    font-weight:700 ;
+    background-color: rgb(45, 165, 165);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
