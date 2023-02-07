@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(224, 217, 217);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .loginbox {
+    width: 30%;
+    height: 75%;
+    background-color: aliceblue;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 10px;
+}
+
+.main .loginbox .logo {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main .loginbox .logo img {
+    width: 100px;
+    height: 100px;
+}
+
+.main .loginbox.loginform {
+    width: 100%;
+    height: 50%;
+}
+
+.main .loginbox .loginform form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.main .loginbox .loginform form input {
+    width: 90%;
+    height: 30px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid gray;
+    text-indent: 10px;
+}
+
+.main .loginbox .loginform form button {
+    margin-top: 20px;
+    width: 70%;
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+    border:none;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.main .loginbox .loginform form button:hover {
+background-color: rgb(96, 155, 163);
+}
+.main .loginbox .loginform form a {
+text-decoration: none;
+font-size: 18px;
+color: black;
+font-weight: 700;
+transition: all 0.5s ease-in-out;
+}
+.main .loginbox .loginform form a:hover {
+    color: rgb(96, 155, 163);
+
+}
+.alertusername{
+    display: none;
+    color: red;
+    margin-block: -10px;
+    font-weight: 400;
+}
+.alertusername1{
+    display: block;
+}
+.alertpassword{
+    display: none;
+    color: red;
+    margin-block: -10px;
+    font-weight: 400
+}
+.alertpassword1{
+    display: block;
+}
+.show{
+    position: relative;
+    margin-top: -10%;
+    margin-left:79.5% ;
+    cursor: pointer;
+    display: none;
+    padding-bottom:7px ;
+}
+.alertshow{
+display: block;
+}

@@ -1,0 +1,7 @@
+.requestformbox{
+    width: 80%;
+    height: 90%;
+    background-color: white;
+    border: 2px solid rgb(223, 217, 217);
+    border-radius: 10px;
+}

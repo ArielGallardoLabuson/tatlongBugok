@@ -70,12 +70,12 @@ include('requestfunc.php');
                     <br><br>
                     This Assistance request is for:
                     <br><br>
-                    &emsp; <span id="medical"></span> Medical Assistance <br>
+                    &emsp;<span id="medical"></span> Medical Assistance <br>
                     &emsp;<span id="burial"></span> Burial Assistance <br>
-                    &emsp;( ) Hospital Bill <br>
-                    &emsp;( ) Educational Assistance <br>
-                    &emsp;( ) Legal Assistance (PAO) <br>
-                    &emsp;( ) Others <br><br>
+                    &emsp;<span id="hospital"></span> Hospital Bill <br>
+                    &emsp;<span id="educ"></span> Educational Assistance <br>
+                    &emsp;<span id="legal"></span> Legal Assistance (PAO) <br>
+                    &emsp;<span id="Others"></span> Others <br><br>
 
 
 

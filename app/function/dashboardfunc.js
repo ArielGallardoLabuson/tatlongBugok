@@ -89,18 +89,43 @@ $('#bell').on('click',function(){
         text() +  `, residing in Barangay Sto. Cristo, Pulilan, Bulacan is one of
         the indigents of our Barangay`
         
-        
-         if(currentrow1.find("td:eq(7)").text() == "Medical Assistance"){
+        document.getElementById("assistancerequest").innerHTML = currentrow1.find("td:eq(7)").text()
+      const request = document.getElementById("assistancerequest").innerHTML.trim()
+         if("Medical Assistance" == request  ){
           document.getElementById("medical").innerHTML = `( / )`
         }
         else{
           document.getElementById("medical").innerHTML =  `( )`
         }
-         if(currentrow1.find("td:eq(7)").text() == "Burial Assistance"){
+         if(request == "Burial Assistance"){
           document.getElementById("burial").innerHTML = `( / ) Burial Assistance`
         }
         else{
           document.getElementById("burial").innerHTML =  `( )`
+        }
+        if(request == "Hospital Bill"){
+          document.getElementById("hospital").innerHTML = `( / ) Hospital Bill`
+        }
+        else{
+          document.getElementById("hospital").innerHTML =  `( )`
+        }
+        if(request == "Educational Assistance"){
+          document.getElementById("educ").innerHTML = `( / ) Educational Assistance`
+        }
+        else{
+          document.getElementById("educ").innerHTML =  `( )`
+        }
+        if(request == "Legal Assistance"){
+          document.getElementById("legal").innerHTML = `( / ) Educational Assistance`
+        }
+        else{
+          document.getElementById("legal").innerHTML =  `( )`
+        }
+        if(request == "Others"){
+          document.getElementById("Others").innerHTML = `( / ) Others`
+        }
+        else{
+          document.getElementById("Others").innerHTML =  `( )`
         }
         })
 
@@ -112,3 +137,26 @@ $('#bell').on('click',function(){
             }
         });
         
+        $('.password').keyup(function(){
+          $('.show').addClass('alertshow')
+          if( !$(this).val() ) {   
+            $('.show').removeClass('alertshow')
+          }
+        })
+        
+        const show = document.querySelector('.show');
+let status = 1;
+        show.addEventListener('click', ()=>{
+        if(status == 1){
+          status = 0;
+          show.innerHTML = 'hide'
+          document.querySelector('.password').type = 'text';
+          return
+        }
+        if(status == 0){
+        show.innerHTML = 'show'
+      status = 1
+      document.querySelector('.password').type = 'password';
+      return
+      }  
+      })

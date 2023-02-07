@@ -1,0 +1,26 @@
+.historybox{
+    width: 50%;
+    height: 90%;
+    background-color: white;
+    border: 2px solid rgb(223, 217, 217);
+    overflow: auto;
+}
+.historybox h2{
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.title h3{ 
+    padding-top: 10px;
+    padding-left: 29px;
+    color: rgb(62, 145, 145);
+}
+.tranachistory .body, .historydate{
+margin-inline: 40px;
+font-size: 16px;
+color: rgb(94, 92, 92);
+font-weight: 700;
+}
+.tranachistory{
+    background-color: rgb(226, 225, 225);
+    margin-top: 20px;
+}
