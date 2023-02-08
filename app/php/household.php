@@ -49,7 +49,7 @@ include('requestfunc.php');
             </div>
             <div class="houseaddandsearch">
                 <div class="addbox">
-                    <button class="houseadd">Add Officials/Staff</button>
+                    <button class="houseadd">Add Household</button>
                     <button class="housedownload">Download in Excel</button>
                 </div>
                 <div class="housesearchbox">

@@ -4,6 +4,8 @@ include('connection.php');
 require('./PHPMailerAutoload.php');
 
 session_start();
+$_SESSION['username1'] = $_SESSION['username']; 
+
 if(isset($_POST['change'])){
     $email = mysqli_real_escape_string($connection, $_POST['email']);
     $password = mysqli_real_escape_string($connection, $_POST['password']);
@@ -27,8 +29,7 @@ if(isset($_POST['change'])){
     if (!$mail->send()) {
         echo "Messege could not be sent";
    } else {
-        $_SESSION['code'] = $verification_code;
-        $_SESSION['username'] = $username;      
+        $_SESSION['code'] = $verification_code;  
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
 

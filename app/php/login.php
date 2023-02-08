@@ -2,10 +2,11 @@
 <?php
 include('connection.php');
 error_reporting(0);
-session_start();
-
     $username = mysqli_real_escape_string($connection,$_POST['username']);
     $password = mysqli_real_escape_string($connection, md5($_POST['password']));
+    $_SESSION['username'] = $username;
+    $_SESSION['username'];
+ 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,18 +63,26 @@ if(isset($_POST['submit'])){
             const alertbox = document.querySelector('.alertpassword');
             alertbox.classList.add('alertpassword1')       
             </script>";
+
         }
         else{
             $quer = mysqli_query($connection, "SELECT loginattempt FROM residentsdata  WHERE username = '{$username}'");
             $result = mysqli_fetch_array($quer);
             echo $result['loginattempt'];
            if($result['loginattempt'] == 0){
+            session_start();
             $_SESSION['username'] = $username;
- 
+            
             echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/changepassword.php";</script>';
         } 
+        else if($result['loginattempt'] == 2){
+            echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/dashboard.php";</script>';
+            
+        }
         else{
-            echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/changepassword.php";</script>';
+session_start();
+$_SESSION['username'] = $username;
+            echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/announcement.php";</script>';
         }
             
            

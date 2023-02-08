@@ -1,4 +1,7 @@
-
+<?php
+session_start();
+$username = $_SESSION['username1'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,12 +50,34 @@
     <?php
 include 'connection.php';
 require('./PHPMailerAutoload.php');
-session_start();
+
 $email = $_SESSION['email'];
-$username = $_SESSION['username'];
+$username = $_SESSION['username1'];
 $code = $_SESSION['code'];
 $pass = md5($_SESSION['password']);
-
+    if (isset($_POST['verifybtn'])) {
+        $number1 = mysqli_real_escape_string($connection, $_POST['number1']);
+        $number2 = mysqli_real_escape_string($connection, $_POST['number2']);
+        $number3 = mysqli_real_escape_string($connection, $_POST['number3']);
+        $number4 = mysqli_real_escape_string($connection, $_POST['number4']);
+        $number5 = mysqli_real_escape_string($connection, $_POST['number5']);
+        $number6 = mysqli_real_escape_string($connection, $_POST['number6']);
+        $number = $number1 . $number2 . $number3 . $number4 . $number5 . $number6;
+    
+        if ($number === $code) {
+    
+            $sql = "UPDATE residentsdata SET `password`='{$pass}',`loginattempt`= 1,`email` = '{$email}' WHERE `username` = '{$username}'";
+            $query = mysqli_query($connection, $sql);
+            echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/announcement.php";</script>';
+      
+            
+        } else {
+            echo "<script>
+            const alertbox = document.querySelector('.h3');
+            alertbox.classList.add('alerth3')       
+            </script>";
+         }
+    }
 if(isset($_POST['updatebtn'])){
     $email = $_SESSION['email']; 
 
@@ -80,6 +105,8 @@ if(isset($_POST['updatebtn'])){
     else{
 $sql ="UPDATE `residentsdata` SET `code`='$verification_code' WHERE username = '{$username}'" ;
 $queryupdate =  mysqli_query($connection,$sql);
+
+
 echo "<script>
 const alertbox = document.querySelector('.h3v');
 alertbox.classList.add('alerth3')       
@@ -88,28 +115,7 @@ alertbox.classList.add('alerth3')
 }
 }
 
-if (isset($_POST['verifybtn'])) {
-    $number1 = mysqli_real_escape_string($connection, $_POST['number1']);
-    $number2 = mysqli_real_escape_string($connection, $_POST['number2']);
-    $number3 = mysqli_real_escape_string($connection, $_POST['number3']);
-    $number4 = mysqli_real_escape_string($connection, $_POST['number4']);
-    $number5 = mysqli_real_escape_string($connection, $_POST['number5']);
-    $number6 = mysqli_real_escape_string($connection, $_POST['number6']);
-    $number = $number1 . $number2 . $number3 . $number4 . $number5 . $number6;
 
-    if ($number === $code) {
-
-        $sql = "UPDATE `residentsdata` SET`password`='{$pass}',`loginattempt`= 1,`email`='{$email}' WHERE `username` = '{$username}'";
-        $query = mysqli_query($connection, $sql); 
-        echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/announcement.php";</script>';
-        
-    } else {
-        echo "<script>
-        const alertbox = document.querySelector('.h3');
-        alertbox.classList.add('alerth3')       
-        </script>";
-     }
-}
 ?>
 
     <script>

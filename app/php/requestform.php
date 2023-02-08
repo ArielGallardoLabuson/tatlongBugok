@@ -1,3 +1,12 @@
+<?php
+include('requestfunc.php');
+session_start();
+$username = $_SESSION['username'];
+$sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' ";
+$sqlresult2 =  mysqli_query($connection, $sqlquery2);
+$result = mysqli_fetch_array($sqlresult2);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +17,7 @@
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="stylesheet" href="../design/announcement.css">
     <link rel="stylesheet" href="../design/requestform.css">
-    <title>Document</title>
+    <title>Barangay Management System</title>
 </head>
 
 <body>
@@ -22,7 +31,7 @@
         <div class="sidebar">
             <div class="picture">
                 <img id="defaultpic" src="../images/defaultpicture.png" alt="">
-                <h3>Ariel Labuson</h3>
+                <h3><?php echo $result['name'];?></h3>
             </div>
             <a href="announcement.php" class="hyperlink">Announcement</a>
             <a href="history.php"  class="hyperlink">History</a>
