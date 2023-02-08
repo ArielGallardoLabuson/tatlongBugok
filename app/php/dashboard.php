@@ -84,7 +84,7 @@ while($row6 = mysqli_fetch_assoc($result6) ){
                 <a href="household.php" class="hyperlink">Households</a>
                 <a href="requesttable.php" class="hyperlink">Request Records</a>
                 <a href="residents.php" class="hyperlink">Residents</a>
-            </div>`
+            </div>
         </div>
 
         <div class="navbar">

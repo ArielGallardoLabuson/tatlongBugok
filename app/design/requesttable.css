@@ -48,6 +48,15 @@ td {
 
 }
 
+.heros {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+
+}
+
 button {
     width: 60px;
     height: 30px;
@@ -138,4 +147,32 @@ select{
 }
 .active{
 visibility: visible;
+}
+.heroclearance{
+    position: absolute;
+    top: 10%;
+    left: 19.5%;
+ display: flex;
+ height: 180%;
+ width: 80%;
+ justify-content: center;
+ align-items: center ;  
+ background-color: rgb(128, 128, 128, 75%);
+display: none;
+   }
+.clearance{
+    width: 815px;
+    height: 1056px;
+    background-color: white;
+    padding-inline: 40px;
+    padding-block: 80px;
+    font-size: 16px;
+    font-family: 'Noto Sans', sans-serif;
+    line-height: 22px;
+
+}
+#punong1, .clear{font-size: 24px; font-weight: 700; font-family: 'Inria Serif', serif;     margin-left: 200px;}
+
+.clear{
+    margin-left: 180px;
 }

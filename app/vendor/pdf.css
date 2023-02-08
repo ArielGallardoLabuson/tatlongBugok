@@ -1,0 +1,116 @@
+
+.main .profile{
+    margin: 0;
+    padding-top: 100px;
+    width: 100%;
+    margin-left: 40px;
+    height: -100px;
+    position: relative;
+    top: 100px;
+}
+.main .name{
+    font-size: 35px;
+    padding-top: -300px;
+}
+
+p{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+h1{
+    width: 100%;
+    background-color: #2596be;
+    font-size: 16px;
+    color: beige;
+    font-family: Arial, Helvetica, sans-serif;
+    
+
+}
+.profile .cpnumber{
+    padding-top:-10px ;
+}
+.profile .email{
+    padding-top:-10px ;
+}
+.profile .address{
+    padding-top:-35px ;
+}
+.employment .date{
+    margin-left: 40px;
+    font-weight:bold;
+}
+.objectve{
+    text-align: justify;
+    text-justify: inter-word;
+}
+.employment .location{
+    margin-left: 300px;
+    padding-top: -35px;
+    
+}
+.employment .position{
+    margin-left: 300px;
+    padding-top: -10px;
+    
+}
+
+.education .educdate{
+    margin-left: 40px;
+    font-weight:bold;
+}
+.education .eductoyear{
+    margin-left: 85px;
+    font-weight:bold;
+    padding-top: -34px;
+}
+.education .educlocation{
+    margin-left: 200px;
+    padding-top: -16px;
+    
+}
+.education .educlevel{
+    margin-left: 200px;
+    padding-top: -10px;
+    
+}
+.skills .program{
+    margin-left: 40px;
+    
+    
+}
+.skills .difficulty{
+    margin-left: 200px;
+    padding-top: -35px;
+    
+    
+}
+.personalinfo .inform{
+    margin-left: 140px;
+    padding-top: -33px;
+}
+
+.info{
+    margin-left: 40px;
+    font-weight: bold;
+
+}
+img{
+    margin-left: 500px;
+    padding-top: -50px;
+
+    height: 192px;
+    width: 192px;
+}
+
+ .signature{
+     padding-top: 50px;
+    margin-left: 550px;
+    text-decoration: underline;
+    font-weight: bold;
+    
+ }
+ .applicant{
+     padding-top: -20px;
+    margin-left: 570px;
+ }

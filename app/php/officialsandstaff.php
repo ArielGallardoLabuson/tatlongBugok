@@ -107,7 +107,6 @@ include('updatefunc.php');
                             <td><?php echo $result1['address']; ?></td>
                             <td> <?php echo $result1['startofterm']; ?></td>
                             <td> <?php echo $result1['endofterm']; ?></td>
-                       
                             <td> <button type="submit" id="edit" name="editt">Edit</button> <button id="archive">Archive</button> </td>
                         </tr>
                         <?php } ?>

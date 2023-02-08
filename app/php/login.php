@@ -2,8 +2,10 @@
 <?php
 include('connection.php');
 error_reporting(0);
+session_start();
+
     $username = mysqli_real_escape_string($connection,$_POST['username']);
-    $password = mysqli_real_escape_string($connection, $_POST['password']);
+    $password = mysqli_real_escape_string($connection, md5($_POST['password']));
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +64,19 @@ if(isset($_POST['submit'])){
             </script>";
         }
         else{
-            echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/announcement.php";</script>';
+            $quer = mysqli_query($connection, "SELECT loginattempt FROM residentsdata  WHERE username = '{$username}'");
+            $result = mysqli_fetch_array($quer);
+            echo $result['loginattempt'];
+           if($result['loginattempt'] == 0){
+            $_SESSION['username'] = $username;
+ 
+            echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/changepassword.php";</script>';
+        } 
+        else{
+            echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/changepassword.php";</script>';
+        }
+            
+           
         }
     }
 ?>

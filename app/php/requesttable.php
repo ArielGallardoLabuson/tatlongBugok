@@ -94,6 +94,52 @@ include('requestfunc.php');
                 </div>
 
             </div>
+            <div class="heroclearance">
+                <div class="clearance">
+                <p class="header">Republic of the Philippines <br>
+                        Province of Bulacan <br>
+                        Municipality of Pulilan <br>
+                        <b>BARANGAY STO. CRISTO</b> <br>
+                        Telephone No. (044)760-1205
+                    </p>
+                    <br>
+                    <p>________________________________________________________________________________</p>
+                    <br>
+                    <center>
+                        <p id="punong1">OFFICE OF THE BARANGAY CHAIRMAN</p> <br>
+                            <p class="clear">BARANGAY CLEARANCE</p>
+                        
+                    </center>
+                    <br><br>
+                    <p id="front">To Whom It May Concern:
+                        <br><br>
+                    <p id="name1"> </p>
+                    <br><br>
+                    This Assistance request is for:
+                    <br><br>
+                    &emsp;<span id="medical"></span> Medical Assistance <br>
+                    &emsp;<span id="burial"></span> Burial Assistance <br>
+                    &emsp;<span id="hospital"></span> Hospital Bill <br>
+                    &emsp;<span id="educ"></span> Educational Assistance <br>
+                    &emsp;<span id="legal"></span> Legal Assistance (PAO) <br>
+                    &emsp;<span id="Others"></span> Others <br><br>
+
+
+
+                    This Certification is issued upon the request of the above-named for legal Purposes.
+                    <p id="date"> </p>,
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <b>DENNIS M. CRUZ</b> <br>
+                    Punong Barangay
+
+                    </p>
+                    <button onclick="Export2Doc('cert')">download</button>
+                </div>
+            </div>
             <div class="requestinfo">
                 <div class="requestinfobox">
                     <p id="id#"> </p>
@@ -162,7 +208,8 @@ include('requestfunc.php');
                         <td class="tablerow">
                             <?php echo $result['assistancerequest']; ?>
                         </td>
-                        <td> <button class="requestedit">print</button> <button id="requestarchive">Archive</button> </td>
+                        <td> <button class="requestedit">print</button>
+                         <button id="requestarchive">Archive</button> </td>
 
                     </tr>
                 <?php } ?>
@@ -170,6 +217,7 @@ include('requestfunc.php');
                 </table>
             </div>
         </div>
+        
     </div>
 
     </div>
