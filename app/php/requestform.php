@@ -3,7 +3,7 @@ include('requestfunc.php');
 session_start();
 $username = $_SESSION['username'];
 $sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' ";
-$sqlresult2 =  mysqli_query($connection, $sqlquery2);
+$sqlresult2 = mysqli_query($connection, $sqlquery2);
 $result = mysqli_fetch_array($sqlresult2);
 
 ?>
@@ -28,13 +28,84 @@ $result = mysqli_fetch_array($sqlresult2);
         <h1>Settings</h1>
     </div>
     <div class="main">
+        <form action="" method="post">
+
+            <div class="barangayclearancebox">
+                <div class="box">
+                    <div class="header">
+                        <h2>Barangay Clearance</h2>
+                    </div>
+                    <div class="body">
+                        <h3>Purpose of request</h3>
+                        <textarea name="purpose" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
+                            rows="10" required></textarea>
+                        <button type="submit" name="barangayclearancebtn" class="button">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form action="" method="post">
+            <div class="businessclearancebox">
+                <div class="box">
+                    <div class="header">
+                        <h2>Business Clearance</h2>
+                    </div>
+                    <div class="body">
+                        <h3>Purpose of request</h3>
+                        <textarea name="purpose" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
+                            rows="10" required></textarea>
+                        <button type="submit" name="businessclearancebtn" class="button">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form action="" method="post">
+            <div class="certificationbox">
+                <div class="box">
+                    <div class="header">
+                        <h2>Certificate</h2>
+                    </div>
+                    <div class="body">
+                        <h3>Purpose of request</h3>
+                        <textarea name="purpose" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
+                            rows="10" required></textarea>
+                        <button type="submit" name="certificatebtn" class="button">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <form action="" method="post">
+            <div class="barangayindigencybox">
+                <div class="box">
+                    <div class="header">
+                        <h2>Barangay Indigency</h2>
+                    </div>
+                    <div class="body1">
+                        <h3>Purpose of request</h3>
+                        <select name="assistrequest" id="">
+                            <option value=" Medical Assistance"> Medical Assistance</option>
+                            <option value="Burial Assistance">Burial Assistance</option>
+                            <option value="Hospital Bill">Hospital Bill
+                            </option>
+                            <option value="Educational Assistance">Educational Assistance</option>
+                            <option value="Others">Others</option>
+                        </select>
+                        <textarea name="purpose" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
+                            rows="10" required></textarea>
+                        <button type="submit" name="barangayindigencybtn" class="button">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </form>
         <div class="sidebar">
             <div class="picture">
                 <img id="defaultpic" src="../images/defaultpicture.png" alt="">
-                <h3><?php echo $result['name'];?></h3>
+                <h3>
+                    <?php echo $result['name']; ?>
+                </h3>
             </div>
             <a href="announcement.php" class="hyperlink">Announcement</a>
-            <a href="history.php"  class="hyperlink">History</a>
+            <a href="history.php" class="hyperlink">History</a>
             <a href="requestform.php" style="background-color: rgb(238, 227, 227);" class="hyperlink">Request Form</a>
             <a href="account.php" class="hyperlink">Account</a>
             <a href="qrcode.php" class="hyperlink">QR Code</a>
@@ -53,9 +124,29 @@ $result = mysqli_fetch_array($sqlresult2);
         </div>
         <div class="hero">
             <div class="requestformbox">
-                
+                <div class="barangayclearance">
+                    <h3>Barangay Clearance</h3>
+                    <button type="submit" class="button" id="barangayclearance" name="barangayclearance">CLICK
+                        HERE</button>
+                </div>
+                <div class="businessclearance">
+                    <h3>Business Clearance</h3>
+                    <button type="submit" class="button" id="businessclearance" name="businessclearance">CLICK
+                        HERE</button>
+                </div>
+                <div class="certification">
+                    <h3>Certification</h3>
+                    <button type="submit" class="button" id="certification" name="certification">CLICK HERE</button>
+                </div>
+                <div class="barangayindigency">
+                    <h3>Barangay Indigency</h3>
+                    <button type="submit" class="button" id="barangayindigency" name="barangayindigency">CLICK
+                        HERE</button>
+                </div>
+
             </div>
         </div>
+
     </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>

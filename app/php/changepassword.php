@@ -50,7 +50,7 @@ if(isset($_POST['change'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Oswald:wght@700&family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../design/changepassword.css">
-    <title>Document</title>
+    <title>Barangay Management System</title>
 </head>
 
 <body>

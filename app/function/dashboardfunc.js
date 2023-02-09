@@ -46,6 +46,11 @@ $(document).on('keyup', function (e) {
     $('.addofficials').css("display", "none")
     $('.heroclearance').css("display", "none")
     $('.resident').css("display", "none")
+    $('.barangayclearancebox').css("display", "none")
+    $('.businessclearancebox').css("display", "none")
+    $('.certificationbox').css("display", "none")
+    $('.barangayindigencybox').css("display", "none")
+  
   }
 });
 $('.tablerow').on('click', function () {
@@ -59,6 +64,20 @@ $('.tablerow').on('click', function () {
   document.getElementById("purpose").innerHTML = currentrow.find("td:eq(5)").text()
   document.getElementById("requeststatus").innerHTML = currentrow.find("td:eq(6)").text()
   document.getElementById("assistancerequest").innerHTML = currentrow.find("td:eq(7)").text()
+})
+$('#barangayclearance').on('click', function () {
+  $('.barangayclearancebox').css("display", "flex")
+})
+
+$('#businessclearance').on('click', function () {
+  $('.businessclearancebox').css("display", "flex")
+})
+$('#certification').on('click', function () {
+  $('.certificationbox').css("display", "flex")
+})
+
+$('#barangayindigency').on('click', function () {
+  $('.barangayindigencybox').css("display", "flex")
 })
 
 $('#officialbutton').on('click', function () {

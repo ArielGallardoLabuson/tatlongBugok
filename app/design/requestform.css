@@ -1,7 +1,101 @@
 .requestformbox{
-    width: 80%;
+    width: 85%;
     height: 90%;
     background-color: white;
     border: 2px solid rgb(223, 217, 217);
     border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px;
+    gap: 20px;
+}
+.requestformbox .barangayclearance, .businessclearance, .certification, .barangayindigency{
+ width: 200px;
+ height: 180px;
+  background-image: linear-gradient(to bottom right, rgb(104, 195, 248), rgb(201, 229, 245));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 45px;
+    justify-content: space-between;
+    border-radius: 5px;
+
+}
+.requestformbox .barangayclearance h3, .businessclearance h3, .certification h3, .barangayindigency h3{
+    border-bottom: 2px solid black;
+    line-height: 30px;
+}
+.button{
+    width: 160px;
+    height: 40px;
+    outline: none;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+}
+.barangayclearancebox, .businessclearancebox, .certificationbox, .barangayindigencybox{
+    margin-left: 10%;
+    width:90%;
+    height: 100%;
+    background-color: rgb(128, 128, 128, 0.50);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.box{
+    margin-left: 8%;
+    width: 400px;
+    height: 360px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+
+}
+.header{
+    margin: 0;
+    margin-top: 40px;
+    padding: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.body{
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    gap: 20px;
+}
+.body1{
+    width: 100%;
+    height: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+select{
+    width: 200px;
+    font-size:16px;
+    height: 30px;
+}
+.purpose{
+
+    width: 80%;
+    height: 100px;
+    font-size: 16px;
+    text-indent: 10px;
+    line-height: 25px;
+    outline: none;
 }
