@@ -17,7 +17,7 @@ if(isset($_POST['addofficials'])){
 }
 
 if (isset($_POST['btn'])) {
-    $id = "2023".(rand(100,10000));;
+    $id = "2023".(rand(100,10000));
     $firstname = mysqli_real_escape_string($connection, $_POST['firstname']);
     $middlename = mysqli_real_escape_string($connection, $_POST['middlename']);
     $lastname = mysqli_real_escape_string($connection, $_POST['lastname']);
@@ -33,14 +33,14 @@ if (isset($_POST['btn'])) {
     $month = mysqli_real_escape_string($connection, $_POST['month']);
     $day = mysqli_real_escape_string($connection, $_POST['day']);
     $year = mysqli_real_escape_string($connection, $_POST['year']);
-    $birthday = $month." ".$day." ".$year;
+    $birthday = $month." ".$day.", ".$year;
     $condition = mysqli_real_escape_string($connection, $_POST['condition']);
     $civil = mysqli_real_escape_string($connection, $_POST['civil']);
     $voter = mysqli_real_escape_string($connection, $_POST['voter']);
-    $username = $firstname . $middlename . $lastname;
-    $password = md5($lastname . $year);
-
-    $ressql = "INSERT INTO residentsdata (`id`, `name`, `contact`, `address`, `birthdate`, `sex`, `conditionstatus`, `civilstatus`, `voterstatus`, `username`, `password`,`loginattempt`) VALUES ('{$id}','{$name}','{$cellno}','{$address}','{$birthday}','{$updateinputgender}','{$condition }','{$civil}','{$voter}','{$username}','{$password}',0)";
+    $username = trim($id);
+    $password = md5($id.$year); 
+    $qrcode = md5("2023".(rand(100,10000)));
+    $ressql = "INSERT INTO residentsdata (`id`, `name`, `contact`, `address`, `birthdate`, `sex`, `conditionstatus`, `civilstatus`, `voterstatus`, `username`, `password`,`loginattempt`,`email`, `qrcode`) VALUES ('{$id}','{$name}','{$cellno}','{$address}','{$birthday}','{$updateinputgender}','{$condition }','{$civil}','{$voter}','{$username}','{$password}',0,'','{$qrcode}')";
     $resquery = mysqli_query($connection, $ressql);
     echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/residents.php")</script>';
     return;

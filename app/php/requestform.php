@@ -3,8 +3,48 @@ include('requestfunc.php');
 session_start();
 $username = $_SESSION['username'];
 $sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' ";
+
 $sqlresult2 = mysqli_query($connection, $sqlquery2);
 $result = mysqli_fetch_array($sqlresult2);
+
+if(isset($_POST['barangayclearancebtn'])){
+    $purpose = mysqli_real_escape_string($connection, $_POST['purpose1']);
+
+    $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
+     VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Barangay Clearance','{$purpose}','Pending','')";
+    $query = mysqli_query($connection,$sql);
+}
+
+if(isset($_POST['barangayclearancebtn'])){
+    $purpose = mysqli_real_escape_string($connection, $_POST['purpose1']);
+
+    $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
+     VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Barangay Clearance','{$purpose}','Pending','')";
+    $query = mysqli_query($connection,$sql);
+}
+if(isset($_POST['businessclearancebtn'])){
+    $purpose = mysqli_real_escape_string($connection, $_POST['purpose2']);
+
+    $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
+     VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Business Clearance','{$purpose}','Pending','')";
+    $query = mysqli_query($connection,$sql);
+}
+
+if(isset($_POST['certificatebtn'])){
+    $purpose = mysqli_real_escape_string($connection, $_POST['purpose3']);
+
+    $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
+     VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Certification','{$purpose}','Pending','')";
+    $query = mysqli_query($connection,$sql);
+}
+
+if(isset($_POST['barangayindigencybtn'])){
+    $purpose = mysqli_real_escape_string($connection, $_POST['purpose4']);
+    $assistance = mysqli_real_escape_string($connection, $_POST['assistrequest']);
+    $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
+     VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Certificate Indigency','{$purpose}','Pending','{$assistance}')";
+    $query = mysqli_query($connection,$sql);
+}
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +77,7 @@ $result = mysqli_fetch_array($sqlresult2);
                     </div>
                     <div class="body">
                         <h3>Purpose of request</h3>
-                        <textarea name="purpose" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
+                        <textarea name="purpose1" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
                             rows="10" required></textarea>
                         <button type="submit" name="barangayclearancebtn" class="button">Confirm</button>
                     </div>
@@ -52,7 +92,7 @@ $result = mysqli_fetch_array($sqlresult2);
                     </div>
                     <div class="body">
                         <h3>Purpose of request</h3>
-                        <textarea name="purpose" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
+                        <textarea name="purpose2" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
                             rows="10" required></textarea>
                         <button type="submit" name="businessclearancebtn" class="button">Confirm</button>
                     </div>
@@ -67,7 +107,7 @@ $result = mysqli_fetch_array($sqlresult2);
                     </div>
                     <div class="body">
                         <h3>Purpose of request</h3>
-                        <textarea name="purpose" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
+                        <textarea name="purpose3" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
                             rows="10" required></textarea>
                         <button type="submit" name="certificatebtn" class="button">Confirm</button>
                     </div>
@@ -85,12 +125,12 @@ $result = mysqli_fetch_array($sqlresult2);
                         <select name="assistrequest" id="">
                             <option value=" Medical Assistance"> Medical Assistance</option>
                             <option value="Burial Assistance">Burial Assistance</option>
-                            <option value="Hospital Bill">Hospital Bill
-                            </option>
+                            <option value="Hospital Bill">Hospital Bill</option>
                             <option value="Educational Assistance">Educational Assistance</option>
+                            <option value="Hospital Bill">Legal Assistance (PAO)</option>
                             <option value="Others">Others</option>
                         </select>
-                        <textarea name="purpose" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
+                        <textarea name="purpose4" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
                             rows="10" required></textarea>
                         <button type="submit" name="barangayindigencybtn" class="button">Confirm</button>
                     </div>
