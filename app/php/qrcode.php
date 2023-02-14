@@ -52,7 +52,7 @@ $result = mysqli_fetch_array($sqlresult2);
     <div class="hero">
     <div class="qrcodebox">
         
-    <img src="https://api.qrserver.com/v1/create-qr-code/?data=l<?php echo $result['qrcode']; ?>&amp;size=500x500" alt="" title="" />
+    <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?php echo $result['qrcode'];?>&amp;size=500x500" alt="" title="" />
     <h3><?php echo $result['name'];?></h3>
     </div>
 </div>

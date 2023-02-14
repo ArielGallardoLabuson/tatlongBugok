@@ -14,6 +14,8 @@ $sqlresult2 =  mysqli_query($connection, $sqlquery2);
 $sqlquery3 = "SELECT * FROM `householddata` ";
 $sqlresult3 =  mysqli_query($connection, $sqlquery3);
 
+$sqlquery4 = "SELECT * FROM `blotterrecord` ORDER BY `date` asc ";
+$sqlresult4 =  mysqli_query($connection, $sqlquery4);
 
 if(isset($_POST['searchbtn'])){
     $searchbox = mysqli_real_escape_string($connection, $_POST['searchbox']);

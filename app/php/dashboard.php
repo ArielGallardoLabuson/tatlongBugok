@@ -49,6 +49,12 @@ while($row6 = mysqli_fetch_assoc($result6) ){
     $output6 = $row6['count'];
 }
 
+$query7 = "SELECT COUNT(*) AS count FROM `blotterrecord` ";
+$result7 = mysqli_query($connection,$query7);
+
+while($row7 = mysqli_fetch_assoc($result7) ){
+    $output7 = $row7['count'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,6 +90,7 @@ while($row6 = mysqli_fetch_assoc($result6) ){
                 <a href="household.php" class="hyperlink">Households</a>
                 <a href="requesttable.php" class="hyperlink">Request Records</a>
                 <a href="residents.php" class="hyperlink">Residents</a>
+                <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
             </div>
         </div>
 
@@ -115,7 +122,7 @@ while($row6 = mysqli_fetch_assoc($result6) ){
                 </div>
                 <div id="totalblotter" class="box">
                     <div class="counter">
-                        <h1>150</h1>
+                        <h1><?php echo $output7?></h1>
                     </div>
                     <img src="../images/case.png" alt="">
                     <div class="description">

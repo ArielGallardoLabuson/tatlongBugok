@@ -42,7 +42,7 @@ if(isset($_POST['barangayindigencybtn'])){
     $purpose = mysqli_real_escape_string($connection, $_POST['purpose4']);
     $assistance = mysqli_real_escape_string($connection, $_POST['assistrequest']);
     $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
-     VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Certificate Indigency','{$purpose}','Pending','{$assistance}')";
+     VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Certificate of Indigency','{$purpose}','Pending','{$assistance}')";
     $query = mysqli_query($connection,$sql);
 }
 
@@ -123,7 +123,7 @@ if(isset($_POST['barangayindigencybtn'])){
                     <div class="body1">
                         <h3>Purpose of request</h3>
                         <select name="assistrequest" id="">
-                            <option value=" Medical Assistance"> Medical Assistance</option>
+                            <option value="Medical Assistance"> Medical Assistance</option>
                             <option value="Burial Assistance">Burial Assistance</option>
                             <option value="Hospital Bill">Hospital Bill</option>
                             <option value="Educational Assistance">Educational Assistance</option>

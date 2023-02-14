@@ -45,4 +45,41 @@ if (isset($_POST['btn'])) {
     echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/residents.php")</script>';
     return;
 }
+
+if(isset($_POST['blotterrecord'])){
+    $complainant = mysqli_real_escape_string($connection, $_POST['complainant']);
+
+    $address = mysqli_real_escape_string($connection, $_POST['address']);
+
+    $age = mysqli_real_escape_string($connection, $_POST['age']);
+    
+    $contact = mysqli_real_escape_string($connection, $_POST['contact']);
+
+    $complainanee = mysqli_real_escape_string($connection, $_POST['complainanee']);
+
+    $address1 = mysqli_real_escape_string($connection, $_POST['address1']);
+    
+    $age1 = mysqli_real_escape_string($connection, $_POST['age1']);
+    
+    $contact1 = mysqli_real_escape_string($connection, $_POST['contact1']);
+
+    
+    $complaint = mysqli_real_escape_string($connection, $_POST['complaint']);
+
+    $incidence = mysqli_real_escape_string($connection, $_POST['incidence']);
+
+    $action = mysqli_real_escape_string($connection, $_POST['action']);
+
+    $status = mysqli_real_escape_string($connection, $_POST['status']);
+    
+    $monthNum = date("m");
+    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+     $monthName."-".date("d")."-"."20".date("y");
+
+    $sqlblotter = "INSERT INTO `blotterrecord`(`complainant`, `address`, `age`, `contact`, `complainanee`, `address1`, `age1`, `contact1`, `complaint`, `status`, `action`, `incidence`, `date`) VALUES ('{$complainant}','{$address}','$age','$contact','{$complainanee}','{$address1}','{$age1}','{$contact1}','{$complaint}','{$status}','{$action}','{$incidence}','{$monthName}')";
+    $queryblotter = mysqli_query($connection, $sqlblotter);
+    echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/blotterrecord.php")</script>';
+   
+
+}
 ?>

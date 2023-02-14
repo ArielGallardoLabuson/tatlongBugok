@@ -259,7 +259,7 @@ include('insertfunc.php');
 
             <div class="logo">
                 <img src="../images/Sto_Cristo_logo.png" alt="">
-                <h4>Barangay Management System</h4>
+                <h4 id="bar">Barangay Management System</h4>
             </div>
             <div class="links">
                 <a href="dashboard.php" class="hyperlink">Dashboard</a>
@@ -267,6 +267,8 @@ include('insertfunc.php');
                 <a href="household.php" class="hyperlink">Households</a>
                 <a href="requesttable.php" class="hyperlink">Request Records</a>
                 <a href="residents.php" style="background-color: rgb(238, 227, 227);" class="hyperlink">Residents</a>
+                <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
+            
             </div>
         </div>
 

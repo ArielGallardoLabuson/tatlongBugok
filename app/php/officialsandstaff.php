@@ -34,6 +34,8 @@ include('updatefunc.php');
                 <a href="household.php" class="hyperlink">Households</a>
                 <a href="requesttable.php" class="hyperlink">Request Records</a>
                 <a href="residents.php" class="hyperlink">Residents</a>
+                <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
+
             </div>
         </div>
 

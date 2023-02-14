@@ -132,11 +132,14 @@ select{
     height: 80%;
 display: flex;
     background-color: white;
+    border-radius:10px ;
+
 }
 form{
     width: 100%;
     height: 100%;
     display: flex;
+
 }
  .leftinfo, .rightinfo{
     width: 50%;
@@ -145,10 +148,12 @@ form{
 .leftinfo{
 border: 2px solid gray;
 border-right: .5px solid gray;
+border-radius:10px 0 0 10px;
 }
 .rightinfo{
     border: 2px solid gray;
     border-left: 0.5px solid gray;
+    border-radius: 0 10px 10px 0;
 }
 .personalinfo .header h4{
 padding-top: 20px;
@@ -172,6 +177,9 @@ padding-left: 20px;
     font-weight: 700;
     border: 1px solid gray;
     text-indent: 10px;
+}
+h4{
+    color: gray;
 }
 .address{
     margin-top: 20px;

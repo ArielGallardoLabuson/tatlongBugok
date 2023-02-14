@@ -10,6 +10,7 @@ include('requestfunc.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="stylesheet" href="../design/household.css">
+    <link rel="stylesheet" href="../design/blotterrecord.css">
     <title>Barangay Management System</title>
 </head>
 
@@ -25,7 +26,7 @@ include('requestfunc.php');
 
         <div class="logo">
             <img src="../images/Sto_Cristo_logo.png" alt="">
-            <h4>Barangay Management System</h4>
+            <h4 id="bar">Barangay Management System</h4>
             </div>
             <div class="links">
             <a href="dashboard.php" class="hyperlink">Dashboard</a>
@@ -33,6 +34,7 @@ include('requestfunc.php');
                 <a href="household.php" style="background-color: rgb(238, 227, 227);" class="hyperlink">Households</a>
                 <a href="requesttable.php" class="hyperlink">Request Records</a>
                 <a href="residents.php" class="hyperlink">Residents</a>
+                <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
             </div>
         </div>
 

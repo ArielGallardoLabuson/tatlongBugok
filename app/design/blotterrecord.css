@@ -1,0 +1,87 @@
+#addofficialsbox{
+    width: 60%;
+    height: 90%;
+    margin-top: -40px;
+    border-radius: 10px;
+}
+form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    
+}
+.complainant, .complaianee,.complaint{
+    width: 80%;
+    margin-top: 10px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.cominformation1, .cominformation2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+h4{
+    color: #999999;
+}
+.recordinput{
+    width: 80%;
+    height: 30px;
+    outline: none;
+    font-size: 14px;
+    font-weight: 700;
+    border: 1px solid gray;
+    text-indent: 10px;
+    border-radius: 5px;
+}
+.blotterrecord{
+    margin-top: 30px;
+    width: 20%;
+    height: 30px;
+    background-color: rgb(45, 165, 165);
+    border-inline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    font-weight: 700;
+}
+#searchbox{
+margin-top: -3px;
+    display: flex;
+flex-direction: row;
+gap: 5px;
+}
+.recordstatus{
+
+    display: flex;
+    flex-direction:column ;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.recordstatus select{
+
+    width:200px;
+    height: 30px;
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    background-color: rgb(45, 165, 165);
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+#bar{
+    color: black;
+}
