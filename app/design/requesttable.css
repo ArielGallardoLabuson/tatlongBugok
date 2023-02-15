@@ -33,7 +33,7 @@ td {
 
 .requesttable {
     width: 97%;
-    height: 75%;
+    height: 400px;
     border: 1px solid rgb(202, 189, 189);
     border-radius: 10px;
     overflow: auto;
@@ -46,6 +46,10 @@ td {
     align-items: center;
     padding-block: 20px;
 
+}
+#hero{
+    height: 270vh;
+    
 }
 
 .heros {
@@ -191,6 +195,19 @@ flex-direction: column;
     display: none;
 
 }
+ .approveform{
+
+    width: 85%;
+    height: 90%;
+    background-color: rgb(128, 128, 128, 0.75);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: none;
+
+}
 .qrcodesearchbox {
     width: 60%;
     height: 80%;
@@ -239,3 +256,36 @@ td .requestbtn, .requestbtn2{
 }
 #header{height: 140px; margin-left: -90px; width:800px;}
 #header1{height: 140px; margin-left: -40px; width:800px;}
+
+.approvebox{
+    width: 400px;
+    height: 150px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+.yes, .no{
+    width: 100px;
+    height: 40px;   
+}
+
+.yes:hover, .no:hover{
+opacity: 75%;
+}
+.yes{
+    background-color: rgb(45, 165, 165);
+}
+.no{
+    background-color: rgb(204, 30, 30);
+}
+.aprroverequestbtn{
+    display: flex;
+    gap: 20px   ;
+}
+.approvebox p{
+    font-size: 18px;
+}

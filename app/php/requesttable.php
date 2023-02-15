@@ -10,7 +10,35 @@ if (isset($_POST['qrcode'])) {
 
     $sqlquery = "SELECT * FROM `requestrecord` where `id#` = '{$result1['id']}' ";
     $sqlresult = mysqli_query($connection, $sqlquery);
+}
+if (isset($_POST['approve'])) {
+    $iddetect = mysqli_real_escape_string($connection, $_POST['iddetect']);
+    $namedetect = mysqli_real_escape_string($connection, $_POST['namedetect']);
+    $cnumberdetect = mysqli_real_escape_string($connection, $_POST['cnumberdetect']);
+    $addressdetect = mysqli_real_escape_string($connection, $_POST['addressdetect']);
+    $requestpaperdetect = mysqli_real_escape_string($connection, $_POST['requestpaperdetect']);
+    $purposedetect = mysqli_real_escape_string($connection, $_POST['purposedetect']);
+    $requestdetect = mysqli_real_escape_string($connection, $_POST['requestdetect']);
+    $asstancerequestdetect = mysqli_real_escape_string($connection, $_POST['asstancerequestdetect']);
 
+
+}
+if (isset($_POST['yes'])) {
+    $iddetect1 = mysqli_real_escape_string($connection, $_POST['iddetect1']);
+    $namedetect1 = mysqli_real_escape_string($connection, $_POST['namedetect1']);
+    $cnumberdetect1 = mysqli_real_escape_string($connection, $_POST['cnumberdetect1']);
+    $addressdetect1= mysqli_real_escape_string($connection, $_POST['addressdetect1']);
+    $requestpaperdetect1 = mysqli_real_escape_string($connection, $_POST['requestpaperdetect1']);
+    $purposedetect1 = mysqli_real_escape_string($connection, $_POST['purposedetect1']);
+    $requestdetect1 = mysqli_real_escape_string($connection, $_POST['requestdetect1']);
+    $asstancerequestdetect1 = mysqli_real_escape_string($connection, $_POST['asstancerequestdetect1']);
+
+    $sqldetect = "INSERT INTO approvedrequestrecord (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`) VALUES ('{$iddetect1}','{$namedetect1}','{$cnumberdetect1}','{$addressdetect1}','{$requestpaperdetect1}','{$purposedetect1}','{$requestdetect1}','{$asstancerequestdetect1}')";
+    $querydetect = mysqli_query($connection, $sqldetect);  
+    $sqldelete = "DELETE FROM requestrecord WHERE `id#` = '{$iddetect1}'";
+    $querydelete = mysqli_query($connection, $sqldelete);
+    echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/requesttable.php")</script>';
+   
 }
 
 
@@ -57,7 +85,6 @@ if (isset($_POST['qrcode'])) {
                 <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
             </div>
         </div>
-
         <div class="navbar">
             <div class="notifbell">
                 <img id="bell" src="../images/notifbell.png" alt="">
@@ -65,7 +92,42 @@ if (isset($_POST['qrcode'])) {
 
             </div>
         </div>
-        <div class="hero">
+        <div class="hero" id="hero">
+            <div class="approveform">
+                <div class="approvebox">
+                    <p>Are you sure you want to approve this request?</p>
+                    <div class="aprroverequestbtn">
+                        <form action="" method="post">
+                            <input type="hidden" name="iddetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $iddetect;
+                            } ?>">
+                            <input type="hidden" name="namedetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $namedetect;
+                            } ?>">
+                            <input type="hidden" name="cnumberdetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $cnumberdetect;
+                            } ?>">
+                            <input type="hidden" name="addressdetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $addressdetect;
+                            } ?>">
+                            <input type="hidden" name="requestpaperdetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $requestpaperdetect;
+                            } ?>">
+                            <input type="hidden" name="purposedetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $purposedetect;
+                            } ?>">
+                            <input type="hidden" name="requestdetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $requestdetect;
+                            } ?>"><input type="hidden" name="asstancerequestdetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $asstancerequestdetect;
+                            } ?>">
+                            
+                            <button type="submit" class="yes" name="yes">Yes</button>
+                        </form>
+                        <button class="no">No</button>
+                    </div>
+                </div>
+            </div>
             <div class="qrcodesearchform">
                 <div class="qrcodesearchbox">
 
@@ -84,7 +146,7 @@ if (isset($_POST['qrcode'])) {
                     </div>
                 </div>
             </div>
-            
+
 
             <div class="requestinfo">
                 <div class="requestinfobox">
@@ -152,9 +214,129 @@ if (isset($_POST['qrcode'])) {
                                     <?php echo $result['assistancerequest']; ?>
                                 </td>
                                 <td class="tableoption">
-                                    <button class="requestbtn" id="approve">Approve</button>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="iddetect" value="<?php echo $result['id#'] ?>">
+                                        <input type="hidden" name="namedetect" value="<?php echo $result['name'] ?>">
+                                        <input type="hidden" name="cnumberdetect" value="<?php echo $result['cnumber'] ?>">
+                                        <input type="hidden" name="addressdetect" value="<?php echo $result['address'] ?>">
+                                        <input type="hidden" name="requestpaperdetect"
+                                            value="<?php echo $result['requestpaper'] ?>">
+                                        <input type="hidden" name="purposedetect" value="<?php echo $result['purpose'] ?>">
+                                        <input type="hidden" name="requestdetect"
+                                            value="<?php echo $result['requeststatus'] ?>">
+                                        <input type="hidden" name="asstancerequestdetect"
+                                            value="<?php echo $result['assistancerequest'] ?>">
+
+
+
+                                        <button type="submit" class="requestbtn approve" name="approve"
+                                            id="approve">Approve</button>
+                                    </form>
                                     <button class="requestbtn2" id="decline">Decline</button>
                                 </td>
+
+                            </tr>
+                        <?php } ?>
+
+                    </table>
+                </div>
+            </div>
+            <div class="title">
+                <h2>Approved Request Record</h2>
+            </div>
+            <div class="requesttable">
+
+                <div class="table">
+                    <table>
+                        <tr>
+                            <th>ID #</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th>Request Paper</th>
+                            <th>Purpose</th>
+                            <th>Assistance Request</th>
+
+                        </tr>
+                        <?php while ($result5 = mysqli_fetch_array($sqlresult5)) { ?>
+
+
+                            <tr>
+
+                                <td class="tablerow">
+                                    <?php echo $result5['id#']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['name']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['cnumber']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['address']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['requestpaper']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['purpose']; ?>
+                                </td>
+
+                                <td class="tablerow">
+                                    <?php echo $result5['assistancerequest']; ?>
+                                </td>
+
+                            </tr>
+                        <?php } ?>
+
+                    </table>
+                </div>
+            </div>
+            <div class="title">
+                <h2>Declined Request Record</h2>
+            </div>
+            <div class="requesttable">
+
+                <div class="table">
+                    <table>
+                        <tr>
+                            <th>ID #</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Address</th>
+                            <th>Request Paper</th>
+                            <th>Purpose</th>
+                            <th>Assistance Request</th>
+
+                        </tr>
+                        <?php while ($result5 = mysqli_fetch_array($sqlresult5)) { ?>
+
+
+                            <tr>
+
+                                <td class="tablerow">
+                                    <?php echo $result5['id#']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['name']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['cnumber']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['address']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['requestpaper']; ?>
+                                </td>
+                                <td class="tablerow">
+                                    <?php echo $result5['purpose']; ?>
+                                </td>
+
+                                <td class="tablerow">
+                                    <?php echo $result5['assistancerequest']; ?>
+                                </td>
+
                             </tr>
                         <?php } ?>
 
@@ -168,6 +350,18 @@ if (isset($_POST['qrcode'])) {
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="../function/dashboardfunc.js"></script>
+<?php
+if (isset($_POST['approve'])) {
+
+
+    echo "<script>
+    $('.approve').ready(function () {
+        $('.approveform').css('display', 'flex')
+    })
+    </script>
+";
+}
+?>
 <script>
 
     const show1 = document.querySelector('.qrcodesearch')

@@ -50,6 +50,7 @@
       $('.businessclearancebox').css("display", "none")
       $('.certificationbox').css("display", "none")
       $('.barangayindigencybox').css("display", "none")
+      $('.approveform').css("display", "none")
 
     
     }
@@ -79,6 +80,10 @@
 
   $('#barangayindigency').on('click', function () {
     $('.barangayindigencybox').css("display", "flex")
+  })
+
+  $('.no').on('click', function () {
+    $('.approveform').css("display", "none")
   })
 
   $('#officialbutton').on('click', function () {
