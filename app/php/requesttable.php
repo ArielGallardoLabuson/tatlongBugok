@@ -40,6 +40,34 @@ if (isset($_POST['yes'])) {
     echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/requesttable.php")</script>';
    
 }
+if (isset($_POST['decline'])) {
+    $iddetect = mysqli_real_escape_string($connection, $_POST['iddetect']);
+    $namedetect = mysqli_real_escape_string($connection, $_POST['namedetect']);
+    $cnumberdetect = mysqli_real_escape_string($connection, $_POST['cnumberdetect']);
+    $addressdetect = mysqli_real_escape_string($connection, $_POST['addressdetect']);
+    $requestpaperdetect = mysqli_real_escape_string($connection, $_POST['requestpaperdetect']);
+    $purposedetect = mysqli_real_escape_string($connection, $_POST['purposedetect']);
+    $requestdetect = mysqli_real_escape_string($connection, $_POST['requestdetect']);
+    $asstancerequestdetect = mysqli_real_escape_string($connection, $_POST['asstancerequestdetect']);
+
+}
+if (isset($_POST['yes1'])) {
+    $iddetect1 = mysqli_real_escape_string($connection, $_POST['iddetect1']);
+    $namedetect1 = mysqli_real_escape_string($connection, $_POST['namedetect1']);
+    $cnumberdetect1 = mysqli_real_escape_string($connection, $_POST['cnumberdetect1']);
+    $addressdetect1= mysqli_real_escape_string($connection, $_POST['addressdetect1']);
+    $requestpaperdetect1 = mysqli_real_escape_string($connection, $_POST['requestpaperdetect1']);
+    $purposedetect1 = mysqli_real_escape_string($connection, $_POST['purposedetect1']);
+    $requestdetect1 = mysqli_real_escape_string($connection, $_POST['requestdetect1']);
+    $asstancerequestdetect1 = mysqli_real_escape_string($connection, $_POST['asstancerequestdetect1']);
+
+    $sqldetect = "INSERT INTO declinedrequestrecord (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`) VALUES ('{$iddetect1}','{$namedetect1}','{$cnumberdetect1}','{$addressdetect1}','{$requestpaperdetect1}','{$purposedetect1}','{$requestdetect1}','{$asstancerequestdetect1}')";
+    $querydetect = mysqli_query($connection, $sqldetect);  
+    $sqldelete = "DELETE FROM requestrecord WHERE `id#` = '{$iddetect1}'";
+    $querydelete = mysqli_query($connection, $sqldelete);
+    echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/requesttable.php")</script>';
+}
+
 
 
 ?>
@@ -83,6 +111,7 @@ if (isset($_POST['yes'])) {
                     Records</a>
                 <a href="residents.php" class="hyperlink">Residents</a>
                 <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
+                <a href="announcementsandevents.php" class="hyperlink">Announcements & Events</a>
             </div>
         </div>
         <div class="navbar">
@@ -98,27 +127,27 @@ if (isset($_POST['yes'])) {
                     <p>Are you sure you want to approve this request?</p>
                     <div class="aprroverequestbtn">
                         <form action="" method="post">
-                            <input type="hidden" name="iddetect1" value="<?php if (isset($_POST['approve'])) {
+                            <input type="hidden" name="iddetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $iddetect;
                             } ?>">
-                            <input type="hidden" name="namedetect1" value="<?php if (isset($_POST['approve'])) {
+                            <input type="hidden" name="namedetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $namedetect;
                             } ?>">
-                            <input type="hidden" name="cnumberdetect1" value="<?php if (isset($_POST['approve'])) {
+                            <input type="hidden" name="cnumberdetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $cnumberdetect;
                             } ?>">
-                            <input type="hidden" name="addressdetect1" value="<?php if (isset($_POST['approve'])) {
+                            <input type="hidden" name="addressdetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $addressdetect;
                             } ?>">
-                            <input type="hidden" name="requestpaperdetect1" value="<?php if (isset($_POST['approve'])) {
+                            <input type="hidden" name="requestpaperdetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $requestpaperdetect;
                             } ?>">
-                            <input type="hidden" name="purposedetect1" value="<?php if (isset($_POST['approve'])) {
+                            <input type="hidden" name="purposedetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $purposedetect;
                             } ?>">
-                            <input type="hidden" name="requestdetect1" value="<?php if (isset($_POST['approve'])) {
+                            <input type="hidden" name="requestdetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $requestdetect;
-                            } ?>"><input type="hidden" name="asstancerequestdetect1" value="<?php if (isset($_POST['approve'])) {
+                            } ?>"><input type="hidden" name="asstancerequestdetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $asstancerequestdetect;
                             } ?>">
                             
@@ -126,7 +155,42 @@ if (isset($_POST['yes'])) {
                         </form>
                         <button class="no">No</button>
                     </div>
-                </div>
+                </div> 
+            </div>
+            <div class="declineform">
+                <div class="declinebox">
+                    <p>Are you sure you want to decline this request?</p>
+                    <div class="aprroverequestbtn">
+                        <form action="" method="post">
+                            <input type="hidden" name="iddetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $iddetect;
+                            } ?>">
+                            <input type="hidden" name="namedetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $namedetect;
+                            } ?>">
+                            <input type="hidden" name="cnumberdetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $cnumberdetect;
+                            } ?>">
+                            <input type="hidden" name="addressdetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $addressdetect;
+                            } ?>">
+                            <input type="hidden" name="requestpaperdetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $requestpaperdetect;
+                            } ?>">
+                            <input type="hidden" name="purposedetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $purposedetect;
+                            } ?>">
+                            <input type="hidden" name="requestdetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $requestdetect;
+                            } ?>"><input type="hidden" name="asstancerequestdetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $asstancerequestdetect;
+                            } ?>">
+                            
+                            <button type="submit" class="yes1" name="yes1">Yes</button>
+                        </form>
+                        <button class="no1">No</button>
+                    </div>
+                </div> 
             </div>
             <div class="qrcodesearchform">
                 <div class="qrcodesearchbox">
@@ -227,13 +291,25 @@ if (isset($_POST['yes'])) {
                                         <input type="hidden" name="asstancerequestdetect"
                                             value="<?php echo $result['assistancerequest'] ?>">
 
-
-
                                         <button type="submit" class="requestbtn approve" name="approve"
                                             id="approve">Approve</button>
                                     </form>
-                                    <button class="requestbtn2" id="decline">Decline</button>
-                                </td>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="iddetect" value="<?php echo $result['id#'] ?>">
+                                        <input type="hidden" name="namedetect" value="<?php echo $result['name'] ?>">
+                                        <input type="hidden" name="cnumberdetect" value="<?php echo $result['cnumber'] ?>">
+                                        <input type="hidden" name="addressdetect" value="<?php echo $result['address'] ?>">
+                                        <input type="hidden" name="requestpaperdetect"
+                                            value="<?php echo $result['requestpaper'] ?>">
+                                        <input type="hidden" name="purposedetect" value="<?php echo $result['purpose'] ?>">
+                                        <input type="hidden" name="requestdetect"
+                                            value="<?php echo $result['requeststatus'] ?>">
+                                        <input type="hidden" name="asstancerequestdetect"
+                                            value="<?php echo $result['assistancerequest'] ?>">
+
+                                            <button class="requestbtn2" id="decline" name="decline">Decline</button>
+                                        </form>
+                                        </td>
 
                             </tr>
                         <?php } ?>
@@ -309,32 +385,32 @@ if (isset($_POST['yes'])) {
                             <th>Assistance Request</th>
 
                         </tr>
-                        <?php while ($result5 = mysqli_fetch_array($sqlresult5)) { ?>
+                        <?php while ($result6 = mysqli_fetch_array($sqlresult6)) { ?>
 
 
                             <tr>
 
                                 <td class="tablerow">
-                                    <?php echo $result5['id#']; ?>
+                                    <?php echo $result6['id#']; ?>
                                 </td>
                                 <td class="tablerow">
-                                    <?php echo $result5['name']; ?>
+                                    <?php echo $result6['name']; ?>
                                 </td>
                                 <td class="tablerow">
-                                    <?php echo $result5['cnumber']; ?>
+                                    <?php echo $result6['cnumber']; ?>
                                 </td>
                                 <td class="tablerow">
-                                    <?php echo $result5['address']; ?>
+                                    <?php echo $result6['address']; ?>
                                 </td>
                                 <td class="tablerow">
-                                    <?php echo $result5['requestpaper']; ?>
+                                    <?php echo $result6['requestpaper']; ?>
                                 </td>
                                 <td class="tablerow">
-                                    <?php echo $result5['purpose']; ?>
+                                    <?php echo $result6['purpose']; ?>
                                 </td>
 
                                 <td class="tablerow">
-                                    <?php echo $result5['assistancerequest']; ?>
+                                    <?php echo $result6['assistancerequest']; ?>
                                 </td>
 
                             </tr>
@@ -357,6 +433,16 @@ if (isset($_POST['approve'])) {
     echo "<script>
     $('.approve').ready(function () {
         $('.approveform').css('display', 'flex')
+    })
+    </script>
+";
+}
+if (isset($_POST['decline'])) {
+
+
+    echo "<script>
+    $('.decline').ready(function () {
+        $('.declineform').css('display', 'flex')
     })
     </script>
 ";

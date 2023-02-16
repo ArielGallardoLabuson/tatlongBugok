@@ -1,5 +1,6 @@
 <?php
 include('requestfunc.php');
+require('./PHPMailerAutoload.php');
 session_start();
 $username = $_SESSION['username'];
 $sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' ";
@@ -9,25 +10,73 @@ $result = mysqli_fetch_array($sqlresult2);
 
 if(isset($_POST['barangayclearancebtn'])){
     $purpose = mysqli_real_escape_string($connection, $_POST['purpose1']);
+    $monthNum = date("m");
+    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+   $date = $monthName."-".date("d")."-"."20".date("y");
 
     $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
      VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Barangay Clearance','{$purpose}','Pending','')";
     $query = mysqli_query($connection,$sql);
+
+    $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`, `date`, `id#`) VALUES ('{$result['name']}','Barangay Clearance','{$date}','{$result['id']}')";
+    $queryhistory = mysqli_query($connection, $sqlhistory);
+    $mail = new PHPMailer;
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com';
+    $mail->Port = 587;
+    $mail->SMTPAuth = true;
+    $mail->SMTPSecure = 'tls';
+   
+    $mail->Username = 'ariellabuson08@gmail.com';
+    $mail->Password = 'ewvqtnnsurejlkeo';
+   
+    $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
+    $mail->addAddress($result['email']);
+    $mail->addReplyTo('ariellabuson08@gmail.com');
+    $mail->isHTML(true);
+    $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+    $mail->Subject = 'Santo Cristo';
+    $mail->Body = 'Hi Mr/Ms '.$result['name']. ' your Barangay Clearance paper is processing. The paper is pending. '. $date;
+    if (!$mail->send()) {
+        echo "Messege could not be sent";
+    }
+
 }
 
-if(isset($_POST['barangayclearancebtn'])){
-    $purpose = mysqli_real_escape_string($connection, $_POST['purpose1']);
-
-    $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
-     VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Barangay Clearance','{$purpose}','Pending','')";
-    $query = mysqli_query($connection,$sql);
-}
 if(isset($_POST['businessclearancebtn'])){
     $purpose = mysqli_real_escape_string($connection, $_POST['purpose2']);
 
     $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
      VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Business Clearance','{$purpose}','Pending','')";
     $query = mysqli_query($connection,$sql);
+
+    $monthNum = date("m");
+    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+   $date = $monthName."-".date("d")."-"."20".date("y");
+   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`, `date`, `id#`) VALUES ('{$result['name']}','Business Clearance','{$date}','{$result['id']}')";
+   $queryhistory = mysqli_query($connection, $sqlhistory);
+   $mail = new PHPMailer;
+   $mail->isSMTP();
+   $mail->Host = 'smtp.gmail.com';
+   $mail->Port = 587;
+   $mail->SMTPAuth = true;
+   $mail->SMTPSecure = 'tls';
+  
+   $mail->Username = 'ariellabuson08@gmail.com';
+   $mail->Password = 'ewvqtnnsurejlkeo';
+  
+   $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
+   $mail->addAddress($result['email']);
+   $mail->addReplyTo('ariellabuson08@gmail.com');
+   $mail->isHTML(true);
+   $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+   $mail->Subject = 'Santo Cristo';
+   $mail->Body = 'Hi Mr/Ms '.$result['name']. ' your Business Clearance paper is processing. The paper is pending. '. $date;
+   if (!$mail->send()) {
+       echo "Messege could not be sent";
+   }
+
+
 }
 
 if(isset($_POST['certificatebtn'])){
@@ -36,6 +85,33 @@ if(isset($_POST['certificatebtn'])){
     $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
      VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Certification','{$purpose}','Pending','')";
     $query = mysqli_query($connection,$sql);
+
+    $monthNum = date("m");
+    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+   $date = $monthName."-".date("d")."-"."20".date("y");
+   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`, `date`, `id#`) VALUES ('{$result['name']}','Certification','{$date}','{$result['id']}')";
+   $queryhistory = mysqli_query($connection, $sqlhistory);
+   $mail = new PHPMailer;
+   $mail->isSMTP();
+   $mail->Host = 'smtp.gmail.com';
+   $mail->Port = 587;
+   $mail->SMTPAuth = true;
+   $mail->SMTPSecure = 'tls';
+  
+   $mail->Username = 'ariellabuson08@gmail.com';
+   $mail->Password = 'ewvqtnnsurejlkeo';
+  
+   $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
+   $mail->addAddress($result['email']);
+   $mail->addReplyTo('ariellabuson08@gmail.com');
+   $mail->isHTML(true);
+   $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+   $mail->Subject = 'Santo Cristo';
+   $mail->Body = 'Hi Mr/Ms '.$result['name']. ' your Certification paper is processing. The paper is pending. '. $date;
+   if (!$mail->send()) {
+       echo "Messege could not be sent";
+   }
+
 }
 
 if(isset($_POST['barangayindigencybtn'])){
@@ -44,6 +120,35 @@ if(isset($_POST['barangayindigencybtn'])){
     $sql = "INSERT INTO `requestrecord` (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`)
      VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Certificate of Indigency','{$purpose}','Pending','{$assistance}')";
     $query = mysqli_query($connection,$sql);
+
+    $monthNum = date("m");
+    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+   $date = $monthName."-".date("d")."-"."20".date("y");
+   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`, `date`, `id#`) VALUES ('{$result['name']}','Barangay Indigency','{$date}','{$result['id']}')";
+   $queryhistory = mysqli_query($connection, $sqlhistory);
+   $mail = new PHPMailer;
+   $mail->isSMTP();
+   $mail->Host = 'smtp.gmail.com';
+   $mail->Port = 587;
+   $mail->SMTPAuth = true;
+   $mail->SMTPSecure = 'tls';
+  
+   $mail->Username = 'ariellabuson08@gmail.com';
+   $mail->Password = 'ewvqtnnsurejlkeo';
+  
+   $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
+   $mail->addAddress($result['email']);
+   $mail->addReplyTo('ariellabuson08@gmail.com');
+   $mail->isHTML(true);
+   $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+   $mail->Subject = 'Santo Cristo';
+   $mail->Body = 'Hi Mr/Ms '.$result['name']. ' your Barangay Indigency paper is processing. The paper is pending. '. $date;
+   if (!$mail->send()) {
+       echo "Messege could not be sent";
+   }
+
+
+    
 }
 
 ?>

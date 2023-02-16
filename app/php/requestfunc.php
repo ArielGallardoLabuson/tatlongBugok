@@ -20,6 +20,10 @@ $sqlresult4 =  mysqli_query($connection, $sqlquery4);
 $sqlquery5 = "SELECT * FROM `approvedrequestrecord` ";
 $sqlresult5 =  mysqli_query($connection, $sqlquery5);
 
+
+$sqlquery6 = "SELECT * FROM `declinedrequestrecord` ";
+$sqlresult6 =  mysqli_query($connection, $sqlquery6);
+
 if(isset($_POST['searchbtn'])){
     $searchbox = mysqli_real_escape_string($connection, $_POST['searchbox']);
     $sqlquery1 = "SELECT * FROM `officialsandstaff` where  `name` LIke '{$searchbox}___%'  ";

@@ -51,6 +51,8 @@
       $('.certificationbox').css("display", "none")
       $('.barangayindigencybox').css("display", "none")
       $('.approveform').css("display", "none")
+      $('.declineform').css("display", "none")
+      $('.announcementform').css("display", "none")
 
     
     }
@@ -85,6 +87,11 @@
   $('.no').on('click', function () {
     $('.approveform').css("display", "none")
   })
+  $('.no1').on('click', function () {
+    $('.declineform').css("display", "none")
+  })
+ 
+
 
   $('#officialbutton').on('click', function () {
     $('.addofficials').toggle()
@@ -131,6 +138,7 @@
       $('.show').removeClass('alertshow')
     }
   })
+  
 
   const show = document.querySelector('.show');
   let status = 1;

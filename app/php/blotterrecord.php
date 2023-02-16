@@ -39,6 +39,7 @@ include('updatefunc.php');
                 <a href="residents.php" class="hyperlink">Residents</a>
                 <a href="blotterrecord.php" style="background-color: rgb(238, 227, 227);" class="hyperlink">Blotter
                     Records</a>
+                <a href="announcementsandevents.php" class="hyperlink">Announcements & Events</a>
             </div>
         </div>
 
@@ -132,7 +133,7 @@ include('updatefunc.php');
                 <div class="searchbox">
                     <form action="" id="searchbox" method="post">
 
-                       <input type="text">
+                        <input type="text">
                         <button id="search" name="recordsearchbtn">Search</button>
                     </form>
                 </div>
@@ -186,4 +187,5 @@ include('updatefunc.php');
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="../function/dashboardfunc.js"></script>
+
 </html>

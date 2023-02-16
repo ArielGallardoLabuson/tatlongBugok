@@ -91,6 +91,8 @@ while($row7 = mysqli_fetch_assoc($result7) ){
                 <a href="requesttable.php" class="hyperlink">Request Records</a>
                 <a href="residents.php" class="hyperlink">Residents</a>
                 <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
+                <a href="announcementsandevents.php" class="hyperlink">Announcements & Events</a>
+
             </div>
         </div>
 

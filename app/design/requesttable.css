@@ -195,7 +195,7 @@ flex-direction: column;
     display: none;
 
 }
- .approveform{
+ .approveform, .declineform{
 
     width: 85%;
     height: 90%;
@@ -257,7 +257,7 @@ td .requestbtn, .requestbtn2{
 #header{height: 140px; margin-left: -90px; width:800px;}
 #header1{height: 140px; margin-left: -40px; width:800px;}
 
-.approvebox{
+.approvebox, .declinebox{
     width: 400px;
     height: 150px;
     background-color: white;
@@ -276,16 +276,16 @@ td .requestbtn, .requestbtn2{
 .yes:hover, .no:hover{
 opacity: 75%;
 }
-.yes{
+.yes, .yes1{
     background-color: rgb(45, 165, 165);
 }
-.no{
+.no, .no1{
     background-color: rgb(204, 30, 30);
 }
 .aprroverequestbtn{
     display: flex;
     gap: 20px   ;
 }
-.approvebox p{
+.approvebox p, .declinebox p{
     font-size: 18px;
 }

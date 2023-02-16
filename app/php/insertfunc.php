@@ -74,9 +74,9 @@ if(isset($_POST['blotterrecord'])){
     
     $monthNum = date("m");
     $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
-     $monthName."-".date("d")."-"."20".date("y");
+   $date = $monthName."-".date("d")."-"."20".date("y");
 
-    $sqlblotter = "INSERT INTO `blotterrecord`(`complainant`, `address`, `age`, `contact`, `complainanee`, `address1`, `age1`, `contact1`, `complaint`, `status`, `action`, `incidence`, `date`) VALUES ('{$complainant}','{$address}','$age','$contact','{$complainanee}','{$address1}','{$age1}','{$contact1}','{$complaint}','{$status}','{$action}','{$incidence}','{$monthName}')";
+    $sqlblotter = "INSERT INTO `blotterrecord`(`complainant`, `address`, `age`, `contact`, `complainanee`, `address1`, `age1`, `contact1`, `complaint`, `status`, `action`, `incidence`, `date`) VALUES ('{$complainant}','{$address}','$age','$contact','{$complainanee}','{$address1}','{$age1}','{$contact1}','{$complaint}','{$status}','{$action}','{$incidence}','{$date}')";
     $queryblotter = mysqli_query($connection, $sqlblotter);
     echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/blotterrecord.php")</script>';
    

@@ -6,6 +6,9 @@ $sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' ";
 $sqlresult2 =  mysqli_query($connection, $sqlquery2);
 $result = mysqli_fetch_array($sqlresult2);
 
+$sqlhistory = "SELECT `name`, `requestpaper`, `date` FROM `historyrecrod` WHERE `id#` = '{$result['id']}' ORDER BY `queue` desc";
+$queryhistory = mysqli_query($connection, $sqlhistory);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,72 +55,19 @@ $result = mysqli_fetch_array($sqlresult2);
     <div class="hero">
         <div class="historybox">
             <h2>History</h2>
+            <?php while($result1 = mysqli_fetch_array($queryhistory)){?>
             <div class="tranachistory">
                 <div class="title">
-                    <h3>Request Paper</h3> 
+                    <h3><?php echo $result1['requestpaper'] ?></h3> 
                 </div>
                 <div class="body">
-                    <p>Your request paper is processing. The paper is pending.</p>
+                    <p> <?php echo $result1['name'] ?> your <?php echo $result1['requestpaper'] ?> paper is processing. The paper is pending.</p>
                 </div>
                 <div class="historydate">
-                    <p>February 06, 2023</p>
-                </div>
-            </div>
-            <div class="tranachistory">
-                <div class="title">
-                    <h3>Request Paper</h3> 
-                </div>
-                <div class="body">
-                    <p>Your request paper is processing. The paper is pending.</p>
-                </div>
-                <div class="historydate">
-                    <p>February 06, 2023</p>
-                </div>
-            </div>
-            <div class="tranachistory">
-                <div class="title">
-                    <h3>Request Paper</h3> 
-                </div>
-                <div class="body">
-                    <p>Your request paper is processing. The paper is pending.</p>
-                </div>
-                <div class="historydate">
-                    <p>February 06, 2023</p>
-                </div>
-            </div>
-            <div class="tranachistory">
-                <div class="title">
-                    <h3>Request Paper</h3> 
-                </div>
-                <div class="body">
-                    <p>Your request paper is processing. The paper is pending.</p>
-                </div>
-                <div class="historydate">
-                    <p>February 06, 2023</p>
-                </div>
-            </div>
-            <div class="tranachistory">
-                <div class="title">
-                    <h3>Request Paper</h3> 
-                </div>
-                <div class="body">
-                    <p>Your request paper is processing. The paper is pending.</p>
-                </div>
-                <div class="historydate">
-                    <p>February 06, 2023</p>
-                </div>
-            </div>
-            <div class="tranachistory">
-                <div class="title">
-                    <h3>Request Paper</h3> 
-                </div>
-                <div class="body">
-                    <p>Your request paper is processing. The paper is pending.</p>
-                </div>
-                <div class="historydate">
-                    <p>February 06, 2023</p>
+                    <p><?php echo $result1['date'] ?></p>
                 </div>
             </div> 
+            <?php }?>
         </div>
     </div>
 </div>
