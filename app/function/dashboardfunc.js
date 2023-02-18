@@ -14,8 +14,21 @@
       count = 0
       count1 = 0
       console.log(count)
-    }
-
+    }   
+  })
+  $('#bell1').on('click', function () {
+    $('.notifbox').toggle()
+    count += 1
+    $('.setbox1').hide()
+    $('#bell1').addClass('checked')
+    $('#set1').removeClass('checked')
+    console.log(count)
+    if (count == 2 || count1 == 1) {
+      $('#bell1').removeClass('checked')
+      count = 0
+      count1 = 0
+      console.log(count)
+    }   
   })
   $('.resadd').on('click', function () {
     $('.resident').css("display", "flex")
@@ -30,7 +43,18 @@
       $('#set').removeClass('checked')
       count = 0
       count1 = 0
+    }
+  })
+  $('#set1').on('click', function () {
+    $('.setbox').toggle()
+    count1 += 1
+    $('.notifbox').hide()
+    $('#set1').addClass('checked')
 
+    if (count1 == 2 || count == 1) {
+      $('#set1').removeClass('checked')
+      count = 0
+      count1 = 0
     }
   })
   $(document).on('keyup', function (e) {
@@ -53,6 +77,7 @@
       $('.approveform').css("display", "none")
       $('.declineform').css("display", "none")
       $('.announcementform').css("display", "none")
+      
 
     
     }
@@ -72,6 +97,14 @@
   $('#barangayclearance').on('click', function () {
     $('.barangayclearancebox').css("display", "flex")
   })
+  $('#menuicon').on('click', function () {
+    $('.sidebar').css("display", "flex")
+    $('.navbar').css("display", "none")
+    $('.announcementform').css("display", "none")
+    $('.eventform').css("display", "none")
+    
+  })
+
 
   $('#businessclearance').on('click', function () {
     $('.businessclearancebox').css("display", "flex")

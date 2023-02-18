@@ -18,3 +18,12 @@ p{
     border-bottom: 2px solid gray;
     font-weight: 700;
 }
+@media only screen and (max-width: 420px) {
+    .accountbox{
+        position: fixed;
+        width: 90%;
+        top: 15%;
+        right: 5%;
+        height: 80%;
+    }
+}

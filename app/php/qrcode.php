@@ -48,6 +48,11 @@ $result = mysqli_fetch_array($sqlresult2);
             <img id="bell" src="../images/notifbell.png" alt="">
             <img id="set" src="../images/settings.png" alt="">
         </div>
+        <div class="notifbellmobile">
+            <img id="menuicon" src="../images/menuicon.png" alt="">
+            <img id="bell1" src="../images/notifbell.png" alt="">
+                <img id="set1" src="../images/settings.png" alt="">
+            </div>
     </div>
     <div class="hero">
     <div class="qrcodebox">

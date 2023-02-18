@@ -112,10 +112,39 @@ button{
 }
 .addattendeesbox{
     width: 60%;
-    height: 70%;
+    height: 80%;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
 }
 video{
-    width: 200px;
+    width: 450px;
+    height: 280px;
     background-color: #2DA5A5;
+    position: relative;
+}
+input{
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid gray;
+    font-weight: 700;
+
+}
+.backvideo{
+    position: absolute;
+    top: 24%;
+}
+.backvideo img{
+    height: 230px;
+    width: 230px;
+}
+label{
+font-size: 18px;
+font-weight: 700;
 }

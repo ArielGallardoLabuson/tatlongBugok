@@ -50,10 +50,11 @@ border-bottom: 2px solid rgb(223, 217, 217);
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap:15%
+    gap:10%;
+
 }
 .announcements, .events{
-    width: 37.5%;
+    width: 450px;
     height: 80%;
     background-color: white;
     border-radius: 10px;
@@ -265,4 +266,83 @@ font-weight: 700;
     border: none;
     outline: none;
     cursor: default;
+}
+.notifbellmobile{display: none;}
+@media only screen and (max-width: 420px) {
+    .main .hero{
+    background-color: white;
+    }
+    .main .sidebar{
+        width: 400px;
+        z-index: 1; 
+        display: none;       
+        }
+    .main .navbar{
+        z-index: 2;
+        width: 100%;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+    }
+    .notifbellmobile{
+        display: flex;
+        gap: 10px;
+        width: 30px;
+        height: 30px;
+        margin-right:60px ;
+    }
+    .announcementform{
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        top: 10%;
+        left: 0;
+    }
+    .eventform{
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        top: 10%;
+        left: 0;
+    }
+    .announcementbox{
+        width: 95%;
+        height: 90%;
+        left: 0;
+        overflow: auto;
+    }
+    .eventboxx{
+        width: 95%;
+        height: 90%;
+        left: 0;
+    }
+    .notifbell{
+        display: flex;
+
+    }
+    .notifbell img{
+        display: none;
+    }
+    .main .navbar .logouser{
+        position: fixed;
+        left: -10px;
+        width: 100px;
+    }
+    .main .navbar .logouser h3{
+        display: none;
+    }
+    
+    
+ .announcements{
+    position: absolute;
+    width: 300px;
+    left: 10%;
+ }
+ .events{
+    position: absolute;
+    top: 100%;
+    width: 300px;
+    left: 10%;
+  
+}
 }

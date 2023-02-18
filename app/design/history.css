@@ -27,3 +27,11 @@ font-weight: 700;
 .historydate{
     margin-top: 10px;
 }
+@media only screen and (max-width: 420px) {
+    .historybox{
+        width: 90%;
+        position: absolute;
+        top: 12%;
+        left: 5%;
+    }
+}

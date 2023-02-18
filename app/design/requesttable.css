@@ -231,6 +231,10 @@ align-items: center;
 justify-content: center;
 
 }
+.backvideo img{
+    width: 230px;
+    height: 230px;
+}
 .aprovebtn{
     margin-top: 20px;
     width: 150px;

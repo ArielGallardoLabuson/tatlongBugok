@@ -14,3 +14,12 @@
     width: 80%;
     height: 70%;
 }
+@media only screen and (max-width: 420px) {
+    .qrcodebox{
+        position: fixed;
+        width: 90%;
+        top: 25%;
+        right: 5%;
+        height: 60%;
+    }
+}

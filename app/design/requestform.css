@@ -99,3 +99,53 @@ select{
     line-height: 25px;
     outline: none;
 }
+@media only screen and (max-width: 420px) {
+    .requestformbox{
+        position: absolute;
+        overflow: auto;
+        width: 90%;
+        top: 12%;
+        left: 5%;
+    }
+    .barangayclearancebox{
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        top: 10%;
+        right: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    .box{
+        width: 90%;
+        margin: 0;
+        padding: 0;
+    }
+    .businessclearancebox{
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        top: 10%;
+        right: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    .certificationbox{
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        top: 10%;
+        right: 0px;
+        width: 100%;
+        height: 100%;
+    }
+    .barangayindigencybox{
+        position: fixed;
+        z-index: 1;
+        width: 100%;
+        top: 10%;
+        right: 0px;
+        width: 100%;
+        height: 100%;
+    }
+}

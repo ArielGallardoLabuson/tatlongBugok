@@ -76,11 +76,13 @@ if (isset($_POST['add'])) {
         <div class="hero">
             <div class="addattendeesform">
                 <div class="addattendeesbox">
-
-                    <div class="col-md-6">
+                    <h2>Add Attendees</h2>
                         <video id="preview" width="100%">
+                        
                         </video>
-                        <div class="col-md-6">
+                        <div class="backvideo">
+                        <img src="../images/qrcodeicon.png" alt="">
+                    </div>
                             <label for="">SCAN HERE</label>
                             <form action="" method="post">
                                 <input type="text" name="text" id="text" readonly placeholder="scan qr code"
@@ -89,10 +91,10 @@ if (isset($_POST['add'])) {
                                     $subject = mysqli_real_escape_string($connection, $_POST['subject']);
                                     echo $subject;
                                 } ?>">
-                                <button type="submit" name="add">submit</button>
+                                <button type="submit" name="add">Add</button>
                             </form>
-                        </div>
-                    </div>
+                        
+                    
                 </div>
             </div>
             <div class="attendeeesform">

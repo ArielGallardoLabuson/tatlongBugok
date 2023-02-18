@@ -58,10 +58,17 @@ $queryevent = mysqli_query($connection, $sqlevent);
                 <img id="bell" src="../images/notifbell.png" alt="">
                 <img id="set" src="../images/settings.png" alt="">
             </div>
+            <div class="notifbellmobile">
+            <img id="menuicon" src="../images/menuicon.png" alt="">
+            <img id="bell1" src="../images/notifbell.png" alt="">
+                <img id="set1" src="../images/settings.png" alt="">
+            </div>
         </div>
         <div class="hero">
             <div class="eventform">
                 <div class="eventboxx">
+                <p>
+                            Sto. Cristo Management</p>
                     <div class="eventesubject">
                         <h2>
                         <?php
@@ -75,8 +82,7 @@ $queryevent = mysqli_query($connection, $sqlevent);
                             }
                             ?>
                         </h2>
-                        <p>
-                            Sto. Cristo Management</p>
+
                     </div>
                     <div class="eventdate">
                         <h3>Date</h3>
@@ -129,6 +135,7 @@ $queryevent = mysqli_query($connection, $sqlevent);
             <div class="announcementform">
                 <div class="announcementbox">
                     <div class="titleanddate">
+                   
                         <h2>
                             <?php
                             if (isset($_POST['show'])) {
@@ -157,9 +164,7 @@ $queryevent = mysqli_query($connection, $sqlevent);
 
                                 ?>
                             </p>
-                            <p>
-                                <?php echo $result['admin']; ?>
-                            </p>
+
                         <?php } ?>
                     </div>
                 </div>
