@@ -90,7 +90,8 @@
   $('.no1').on('click', function () {
     $('.declineform').css("display", "none")
   })
- 
+
+
 
 
   $('#officialbutton').on('click', function () {

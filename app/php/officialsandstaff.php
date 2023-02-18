@@ -36,6 +36,7 @@ include('updatefunc.php');
                 <a href="residents.php" class="hyperlink">Residents</a>
                 <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
                 <a href="announcementsandevents.php" class="hyperlink">Announcements & Events</a>
+                <a href="eventattendee.php" class="hyperlink">Event Attendees</a>
 
             </div>
         </div>

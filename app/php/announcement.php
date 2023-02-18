@@ -9,6 +9,9 @@ $result = mysqli_fetch_array($sqlresult2);
 $sql = "SELECT * FROM `announcementrecord` ORDER BY id desc ";
 $query = mysqli_query($connection, $sql);
 
+$sqlevent = "SELECT * FROM `eventsrecord` ORDER BY id desc ";
+$queryevent = mysqli_query($connection, $sqlevent);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +60,72 @@ $query = mysqli_query($connection, $sql);
             </div>
         </div>
         <div class="hero">
+            <div class="eventform">
+                <div class="eventboxx">
+                    <div class="eventesubject">
+                        <h2>
+                        <?php
+                            if (isset($_POST['show1'])) {
+                                $id = mysqli_real_escape_string($connection, $_POST['eventidentify']);
+                                $sql = "SELECT * FROM `eventsrecord` WHERE `id` = $id";
+                                $query = mysqli_query($connection, $sql);
+
+                                $result = mysqli_fetch_array($query);
+                                echo $result['subject'];
+                            }
+                            ?>
+                        </h2>
+                        <p>
+                            Sto. Cristo Management</p>
+                    </div>
+                    <div class="eventdate">
+                        <h3>Date</h3>
+                        <p>
+                            <?php
+                            if (isset($_POST['show1'])) {
+                                $id = mysqli_real_escape_string($connection, $_POST['eventidentify']);
+                                $sql = "SELECT * FROM `eventsrecord` WHERE `id` = $id";
+                                $query = mysqli_query($connection, $sql);
+
+                                $result = mysqli_fetch_array($query);
+                                echo $result['month']." ".$result['day'].", "."20".$result['year'];
+                            }
+                            ?>
+
+                        </p>
+                        <h3>Time</h3>
+                        
+                        <p><?php
+                            if (isset($_POST['show1'])) {
+                                $id = mysqli_real_escape_string($connection, $_POST['eventidentify']);
+                                $sql = "SELECT * FROM `eventsrecord` WHERE `id` = $id";
+                                $query = mysqli_query($connection, $sql);
+
+                                $result = mysqli_fetch_array($query);
+                                echo $result['time'];
+                            }
+                            ?></p>
+                    </div>
+                    <div class="eventbody">
+                        <div class="eventbodychild">
+                            <p>
+                            <?php
+                            if (isset($_POST['show1'])) {
+                                $id = mysqli_real_escape_string($connection, $_POST['eventidentify']);
+                                $sql = "SELECT * FROM `eventsrecord` WHERE `id` = $id";
+                                $query = mysqli_query($connection, $sql);
+
+                                $result = mysqli_fetch_array($query);
+                                echo $result['body'];
+                            }
+                            ?>
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
             <div class="announcementform">
                 <div class="announcementbox">
                     <div class="titleanddate">
@@ -94,6 +163,7 @@ $query = mysqli_query($connection, $sql);
                         <?php } ?>
                     </div>
                 </div>
+
             </div>
             <div class="announcements">
                 <div class="header">
@@ -113,7 +183,7 @@ $query = mysqli_query($connection, $sql);
 
                                 <h3> <input type="hidden" class="identity" name="id" value="<?php echo $result['id']; ?>">
                                 </h3>
-                                <button type="submit" class="show" name="show">Show more</button>
+                                <button type="submit" class="showannounce" name="show">Show more</button>
                         </form>
 
                     </div>
@@ -124,54 +194,36 @@ $query = mysqli_query($connection, $sql);
             <div class="header">
                 <h2>Events</h2>
             </div>
-            <div class="eventbox">
+            <?php while ($resultevent = mysqli_fetch_array($queryevent)) { ?>
+                <div class="eventbox">
 
-                <div class="date">
-                    <h4>January</h4>
-                    <h2>31</h2>
-                </div>
-                <div class="what">
-                    <div class="title">
-                        <h2 id="title">Sample event</h2>
-
+                    <div class="date">
+                        <h4>
+                            <?php echo $resultevent['month'] ?>
+                        </h4>
+                        <h2>
+                            <?php echo $resultevent['day'] ?>
+                        </h2>
                     </div>
-                    <div class="time">
-                        <h4 id="time">10:00 PM</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="eventbox">
-
-                <div class="date">
-                    <h4>January</h4>
-                    <h2>31</h2>
-                </div>
-                <div class="what">
-                    <div class="title">
-                        <h2 id="title">Sample event</h2>
-
-                    </div>
-                    <div class="time">
-                        <h4 id="time">10:00 PM</h4>
+                    <div class="what">
+                        <div class="title">
+                            <h2 id="title">
+                                <?php echo $resultevent['subject'] ?>
+                            </h2>
+                        </div>
+                        <div class="time">
+                            <h4 id="time">
+                                <?php echo $resultevent['time'] ?>
+                            </h4>
+                        </div>
+                        <form action="" method="post">
+                            <input type="hidden" name="eventidentify" value="<?php echo $resultevent['id'] ?>">
+                            <button type="submit" class="show1" name="show1">Show more</button>
+                        </form>
                     </div>
                 </div>
-            </div>
-            <div class="eventbox">
+            <?php } ?>
 
-                <div class="date">
-                    <h4>January</h4>
-                    <h2>31</h2>
-                </div>
-                <div class="what">
-                    <div class="title">
-                        <h2 id="title">Sample event</h2>
-
-                    </div>
-                    <div class="time">
-                        <h4 id="time">10:00 PM</h4>
-                    </div>
-                </div>
-            </div>
         </div>
 
     </div>
@@ -185,6 +237,12 @@ if (isset($_POST['show'])) {
     $('.announcementform').css('display','flex')
 </script>
     ";
+}
+if (isset($_POST['show1'])) {
+    echo "<script>
+    $('.eventform').css('display','flex')
+</script>
+    ";  
 }
 ?>
 <script>

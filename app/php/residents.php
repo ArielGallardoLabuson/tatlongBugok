@@ -269,6 +269,7 @@ include('insertfunc.php');
                 <a href="residents.php" style="background-color: rgb(238, 227, 227);" class="hyperlink">Residents</a>
                 <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
                 <a href="announcementsandevents.php" class="hyperlink">Announcements & Events</a>
+                <a href="eventattendee.php" class="hyperlink">Event Attendees</a>
             
             </div>
         </div>

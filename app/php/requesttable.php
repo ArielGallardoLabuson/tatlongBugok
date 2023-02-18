@@ -112,6 +112,7 @@ if (isset($_POST['yes1'])) {
                 <a href="residents.php" class="hyperlink">Residents</a>
                 <a href="blotterrecord.php" class="hyperlink">Blotter Records</a>
                 <a href="announcementsandevents.php" class="hyperlink">Announcements & Events</a>
+                <a href="eventattendee.php" class="hyperlink">Event Attendees</a>
             </div>
         </div>
         <div class="navbar">
