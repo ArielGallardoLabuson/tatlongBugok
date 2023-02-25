@@ -7,6 +7,11 @@ if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
     echo "<script>window.location.href='login.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid1') {
+
+    echo "<script>window.location.href='dashboard.php'</script>";
+
+}
 $username = $_SESSION['username'];
 $sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' or email = '{$username}'";
 

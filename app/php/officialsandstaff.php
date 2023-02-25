@@ -2,6 +2,17 @@
 include('requestfunc.php');
 include('insertfunc.php');
 include('updatefunc.php');
+session_start();
+if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
+
+    echo "<script>window.location.href='login.php'</script>";
+
+}
+if ($_SESSION['status'] == 'valid' || empty($_SESSION['status'])) {
+
+    echo "<script>window.location.href='announcement.php'</script>";
+
+}
 
 ?>
 <html lang="en">

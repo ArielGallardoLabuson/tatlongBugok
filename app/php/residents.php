@@ -7,6 +7,11 @@ if ($_SESSION['status'] == 'invalid1' || empty($_SESSION['status1'])) {
     echo "<script>window.location.href='login.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid') {
+
+    echo "<script>window.location.href='announcement.php'</script>";
+
+}
 ?>
 
 <html lang="en">

@@ -6,6 +6,10 @@ if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
     echo "<script>window.location.href='login.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid') {
+
+    echo "<script>window.location.href='announcement.php'</script>";
+}
 $monthNum = date("m");
 $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
 $date = $monthName . "-" . date("d") . "-" . "20" . date("y");

@@ -6,7 +6,10 @@ if ($_SESSION['status'] == 'valid') {
 
     echo "<script>window.location.href='announcement.php'</script>";
 }
+if ($_SESSION['status'] == 'valid1') {
 
+    echo "<script>window.location.href='dashboard.php'</script>";
+}
 $username = mysqli_real_escape_string($connection, $_POST['username']);
 $password = mysqli_real_escape_string($connection, md5($_POST['password']));
 
@@ -83,7 +86,7 @@ $password = mysqli_real_escape_string($connection, md5($_POST['password']));
                 echo '<script> window.location.href="http://192.168.254.159/barangaymanagementsystem/app/php/changepassword.php";</script>';
             } else if ($result['loginattempt'] == 2) {
                 session_start();
-                $_SESSION['status'] = 'valid';
+                $_SESSION['status'] = 'valid1';
                 echo '<script> window.location.href="http://192.168.254.159/barangaymanagementsystem/app/php/dashboard.php";</script>';
 
             } else if ($result['loginattempt'] == 1) {

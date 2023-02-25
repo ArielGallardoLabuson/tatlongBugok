@@ -6,7 +6,11 @@ if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
     echo "<script>window.location.href='login.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid') {
 
+    echo "<script>window.location.href='announcement.php'</script>";
+
+}
 $query = "SELECT COUNT(*) AS count FROM `requestrecord`";
 $result = mysqli_query($connection,$query);
 

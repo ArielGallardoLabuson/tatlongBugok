@@ -7,6 +7,11 @@ if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
     echo "<script>window.location.href='login.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid') {
+
+    echo "<script>window.location.href='announcement.php'</script>";
+
+}
 if (isset($_POST['qrcode'])) {
     $qrcode = mysqli_real_escape_string($connection, $_POST['text']);
     $sqlquery1 = "SELECT * FROM `residentsdata` WHERE `qrcode` = '{$qrcode}'  ";
