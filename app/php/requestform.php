@@ -2,8 +2,13 @@
 include('requestfunc.php');
 require('./PHPMailerAutoload.php');
 session_start();
+if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
+
+    echo "<script>window.location.href='login.php'</script>";
+
+}
 $username = $_SESSION['username'];
-$sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' ";
+$sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' or email = '{$username}'";
 
 $sqlresult2 = mysqli_query($connection, $sqlquery2);
 $result = mysqli_fetch_array($sqlresult2);
@@ -18,7 +23,7 @@ if(isset($_POST['barangayclearancebtn'])){
      VALUES ('{$result['id']}','{$result['name']}','{$result['contact']}','{$result['address']}','Barangay Clearance','{$purpose}','Pending','')";
     $query = mysqli_query($connection,$sql);
 
-    $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`, `date`, `id#`) VALUES ('{$result['name']}','Barangay Clearance','{$date}','{$result['id']}')";
+    $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`,`message`, `date`, `id#`) VALUES ('{$result['name']}',' Barangay Clearance','your Barangay Clearance paper is processing. The paper is pending.', '{$date}','{$result['id']}')";
     $queryhistory = mysqli_query($connection, $sqlhistory);
     $mail = new PHPMailer;
     $mail->isSMTP();
@@ -37,6 +42,7 @@ if(isset($_POST['barangayclearancebtn'])){
     $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
     $mail->Subject = 'Santo Cristo';
     $mail->Body = 'Hi Mr/Ms '.$result['name']. ' your Barangay Clearance paper is processing. The paper is pending. '. $date;
+
     if (!$mail->send()) {
         echo "Messege could not be sent";
     }
@@ -53,7 +59,7 @@ if(isset($_POST['businessclearancebtn'])){
     $monthNum = date("m");
     $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
    $date = $monthName."-".date("d")."-"."20".date("y");
-   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`, `date`, `id#`) VALUES ('{$result['name']}','Business Clearance','{$date}','{$result['id']}')";
+   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`,`message`, `date`, `id#`) VALUES ('{$result['name']}',' Business Clearance','your Business Clearance paper is processing. The paper is pending.', '{$date}','{$result['id']}')";
    $queryhistory = mysqli_query($connection, $sqlhistory);
    $mail = new PHPMailer;
    $mail->isSMTP();
@@ -89,7 +95,7 @@ if(isset($_POST['certificatebtn'])){
     $monthNum = date("m");
     $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
    $date = $monthName."-".date("d")."-"."20".date("y");
-   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`, `date`, `id#`) VALUES ('{$result['name']}','Certification','{$date}','{$result['id']}')";
+   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`,`message`, `date`, `id#`) VALUES ('{$result['name']}',' Certification','your Certificate paper is processing. The paper is pending.', '{$date}','{$result['id']}')";
    $queryhistory = mysqli_query($connection, $sqlhistory);
    $mail = new PHPMailer;
    $mail->isSMTP();
@@ -124,8 +130,8 @@ if(isset($_POST['barangayindigencybtn'])){
     $monthNum = date("m");
     $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
    $date = $monthName."-".date("d")."-"."20".date("y");
-   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`, `date`, `id#`) VALUES ('{$result['name']}','Barangay Indigency','{$date}','{$result['id']}')";
-   $queryhistory = mysqli_query($connection, $sqlhistory);
+   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`,`message`, `date`, `id#`) VALUES ('{$result['name']}',' Barangay Indigency','your Barangay Indigency paper is processing. The paper is pending.', '{$date}','{$result['id']}')";
+    $queryhistory = mysqli_query($connection, $sqlhistory);
    $mail = new PHPMailer;
    $mail->isSMTP();
    $mail->Host = 'smtp.gmail.com';
@@ -162,10 +168,25 @@ if(isset($_POST['barangayindigencybtn'])){
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="stylesheet" href="../design/announcement.css">
     <link rel="stylesheet" href="../design/requestform.css">
-    <title>Barangay Management System</title>
+    <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
+    <title>Barangay Sto. Cristo, Pulilan</title>
 </head>
 
 <body>
+    
+<link rel="stylesheet" href="../design/loader.css">
+<div class="loader"></div>
+<script>
+      window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
     <div class="notifbox">
         <h1>Notifications</h1>
     </div>
@@ -184,7 +205,7 @@ if(isset($_POST['barangayindigencybtn'])){
                         <h3>Purpose of request</h3>
                         <textarea name="purpose1" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
                             rows="10" required></textarea>
-                        <button type="submit" name="barangayclearancebtn" class="button">Confirm</button>
+                        <button type="submit" name="barangayclearancebtn" id="btn1" class="button">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -260,7 +281,7 @@ if(isset($_POST['barangayindigencybtn'])){
         <div class="navbar">
             <div class="logouser">
                 <img id="logouser" src="../images/Sto_Cristo_logo.png" alt="">
-                <h3>Barangay Management System</h3>
+                <h3>Barangay Sto. Cristo, Pulilan</h3>
             </div>
             <div class="notifbell">
                 <img id="bell" src="../images/notifbell.png" alt="">

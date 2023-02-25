@@ -1,5 +1,11 @@
 <?php
 include 'connection.php';
+session_start();
+if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
+
+    echo "<script>window.location.href='login.php'</script>";
+
+}
 
 $query = "SELECT COUNT(*) AS count FROM `requestrecord`";
 $result = mysqli_query($connection,$query);
@@ -63,15 +69,30 @@ while($row7 = mysqli_fetch_assoc($result7) ){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barangay Management System</title>
+    <title>Barangay Sto. Cristo, Pulilan</title>
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
 </head>
 
 <body>
+    
+<link rel="stylesheet" href="../design/loader.css">
+<div class="loader"></div>
+<script>
+      window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
 <div class="notifbox">
     <h1>Notifications</h1>
 </div>
@@ -82,7 +103,7 @@ while($row7 = mysqli_fetch_assoc($result7) ){
         <div class="sidebar">
             <div class="logo">
             <img src="../images/Sto_Cristo_logo.png" alt="">
-            <h4>Barangay Management System</h4>
+            <h4>Barangay Sto. Cristo, Pulilan</h4>
             </div>
             <div class="links">
                 <a href="dashboard.php" style="background-color: rgb(238, 227, 227);" class="hyperlink">Dashboard</a>
@@ -205,7 +226,9 @@ while($row7 = mysqli_fetch_assoc($result7) ){
         </div>
 
     </div>
+<?php
 
+?>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
    <script src="../function/dashboardfunc.js"></script>

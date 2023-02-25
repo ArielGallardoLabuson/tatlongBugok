@@ -1,6 +1,12 @@
 <?php
 include('requestfunc.php');
 error_reporting(0);
+session_start();
+if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
+
+    echo "<script>window.location.href='login.php'</script>";
+
+}
 if (isset($_POST['qrcode'])) {
     $qrcode = mysqli_real_escape_string($connection, $_POST['text']);
     $sqlquery1 = "SELECT * FROM `residentsdata` WHERE `qrcode` = '{$qrcode}'  ";
@@ -12,6 +18,7 @@ if (isset($_POST['qrcode'])) {
     $sqlresult = mysqli_query($connection, $sqlquery);
 }
 if (isset($_POST['approve'])) {
+    $qeuedetect = mysqli_real_escape_string($connection, $_POST['qeuedetect']);
     $iddetect = mysqli_real_escape_string($connection, $_POST['iddetect']);
     $namedetect = mysqli_real_escape_string($connection, $_POST['namedetect']);
     $cnumberdetect = mysqli_real_escape_string($connection, $_POST['cnumberdetect']);
@@ -24,23 +31,31 @@ if (isset($_POST['approve'])) {
 
 }
 if (isset($_POST['yes'])) {
+    $qeuedetect1 = mysqli_real_escape_string($connection, $_POST['qeuedetect1']);
     $iddetect1 = mysqli_real_escape_string($connection, $_POST['iddetect1']);
     $namedetect1 = mysqli_real_escape_string($connection, $_POST['namedetect1']);
     $cnumberdetect1 = mysqli_real_escape_string($connection, $_POST['cnumberdetect1']);
-    $addressdetect1= mysqli_real_escape_string($connection, $_POST['addressdetect1']);
+    $addressdetect1 = mysqli_real_escape_string($connection, $_POST['addressdetect1']);
     $requestpaperdetect1 = mysqli_real_escape_string($connection, $_POST['requestpaperdetect1']);
     $purposedetect1 = mysqli_real_escape_string($connection, $_POST['purposedetect1']);
     $requestdetect1 = mysqli_real_escape_string($connection, $_POST['requestdetect1']);
     $asstancerequestdetect1 = mysqli_real_escape_string($connection, $_POST['asstancerequestdetect1']);
 
     $sqldetect = "INSERT INTO approvedrequestrecord (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`) VALUES ('{$iddetect1}','{$namedetect1}','{$cnumberdetect1}','{$addressdetect1}','{$requestpaperdetect1}','{$purposedetect1}','{$requestdetect1}','{$asstancerequestdetect1}')";
-    $querydetect = mysqli_query($connection, $sqldetect);  
-    $sqldelete = "DELETE FROM requestrecord WHERE `id#` = '{$iddetect1}'";
+    $querydetect = mysqli_query($connection, $sqldetect);
+    $sqldelete = "DELETE FROM requestrecord WHERE `qeue` = '{$qeuedetect1}'";
     $querydelete = mysqli_query($connection, $sqldelete);
+    $monthNum = date("m");
+    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+   $date = $monthName."-".date("d")."-"."20".date("y");
+   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`,`message`, `date`, `id#`) VALUES ('{$namedetect1}','{$requestpaperdetect1} Approved','your $requestpaperdetect1 paper is approved. You may claim it in barangay Sto. Cristo.', '{$date}','{$iddetect1}')";
+   $queryhistory = mysqli_query($connection, $sqlhistory);
+ 
     echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/requesttable.php")</script>';
-   
+
 }
 if (isset($_POST['decline'])) {
+    $qeuedetect = mysqli_real_escape_string($connection, $_POST['qeuedetect']);
     $iddetect = mysqli_real_escape_string($connection, $_POST['iddetect']);
     $namedetect = mysqli_real_escape_string($connection, $_POST['namedetect']);
     $cnumberdetect = mysqli_real_escape_string($connection, $_POST['cnumberdetect']);
@@ -52,19 +67,25 @@ if (isset($_POST['decline'])) {
 
 }
 if (isset($_POST['yes1'])) {
+    $qeuedetect1 = mysqli_real_escape_string($connection, $_POST['qeuedetect1']);
     $iddetect1 = mysqli_real_escape_string($connection, $_POST['iddetect1']);
     $namedetect1 = mysqli_real_escape_string($connection, $_POST['namedetect1']);
     $cnumberdetect1 = mysqli_real_escape_string($connection, $_POST['cnumberdetect1']);
-    $addressdetect1= mysqli_real_escape_string($connection, $_POST['addressdetect1']);
+    $addressdetect1 = mysqli_real_escape_string($connection, $_POST['addressdetect1']);
     $requestpaperdetect1 = mysqli_real_escape_string($connection, $_POST['requestpaperdetect1']);
     $purposedetect1 = mysqli_real_escape_string($connection, $_POST['purposedetect1']);
     $requestdetect1 = mysqli_real_escape_string($connection, $_POST['requestdetect1']);
     $asstancerequestdetect1 = mysqli_real_escape_string($connection, $_POST['asstancerequestdetect1']);
 
     $sqldetect = "INSERT INTO declinedrequestrecord (`id#`, `name`, `cnumber`, `address`, `requestpaper`, `purpose`, `requeststatus`, `assistancerequest`) VALUES ('{$iddetect1}','{$namedetect1}','{$cnumberdetect1}','{$addressdetect1}','{$requestpaperdetect1}','{$purposedetect1}','{$requestdetect1}','{$asstancerequestdetect1}')";
-    $querydetect = mysqli_query($connection, $sqldetect);  
-    $sqldelete = "DELETE FROM requestrecord WHERE `id#` = '{$iddetect1}'";
+    $querydetect = mysqli_query($connection, $sqldetect);
+    $sqldelete = "DELETE FROM requestrecord WHERE `qeue` = '{$qeuedetect1}'";
     $querydelete = mysqli_query($connection, $sqldelete);
+    $monthNum = date("m");
+    $monthName = date("F", mktime(0, 0, 0, $monthNum, 10));
+   $date = $monthName."-".date("d")."-"."20".date("y");
+   $sqlhistory = "INSERT INTO `historyrecrod`(`name`, `requestpaper`,`message`, `date`, `id#`) VALUES ('{$namedetect1}','{$requestpaperdetect1} Declined','your $requestpaperdetect1 paper is declined. The paper is declined.', '{$date}','{$iddetect1}')";
+   $queryhistory = mysqli_query($connection, $sqlhistory);
     echo ' <script> window.location.href=("http://localhost/barangaymanagementsystem/app/php/requesttable.php")</script>';
 }
 
@@ -79,16 +100,30 @@ if (isset($_POST['yes1'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="stylesheet" href="../design/requesttable.css">
+    <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
     <link rel="stylesheet" href="../design/certificate.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
-    <title>Barangay Management System</title>
+    <title>Barangay Sto. Cristo, Pulilan</title>
 </head>
 
 <body>
 
+    <link rel="stylesheet" href="../design/loader.css">
+    <div class="loader"></div>
+    <script>
+        window.addEventListener("load", () => {
+            const loader = document.querySelector(".loader");
+
+            loader.classList.add("loader--hidden");
+
+            loader.addEventListener("transitionend", () => {
+                document.body.removeChild(loader);
+            });
+        });
+    </script>
 
     <div class="notifbox">
         <h1>Notifications</h1>
@@ -101,7 +136,7 @@ if (isset($_POST['yes1'])) {
 
             <div class="logo">
                 <img src="../images/Sto_Cristo_logo.png" alt="">
-                <h4>Barangay Management System</h4>
+                <h4>Barangay Sto. Cristo, Pulilan</h4>
             </div>
             <div class="links">
                 <a href="dashboard.php" class="hyperlink">Dashboard</a>
@@ -128,41 +163,47 @@ if (isset($_POST['yes1'])) {
                     <p>Are you sure you want to approve this request?</p>
                     <div class="aprroverequestbtn">
                         <form action="" method="post">
-                            <input type="hidden" name="iddetect1" value="<?php if (isset($_POST['decline'])) {
+                        <input type="hidden" name="qeuedetect1" value="<?php if (isset($_POST['approve'])) {
+                                echo $qeuedetect;
+                            } ?>">
+                            <input type="hidden" name="iddetect1" value="<?php if (isset($_POST['approve'])) {
                                 echo $iddetect;
                             } ?>">
-                            <input type="hidden" name="namedetect1" value="<?php if (isset($_POST['decline'])) {
+                            <input type="hidden" name="namedetect1" value="<?php if (isset($_POST['approve'])) {
                                 echo $namedetect;
                             } ?>">
-                            <input type="hidden" name="cnumberdetect1" value="<?php if (isset($_POST['decline'])) {
+                            <input type="hidden" name="cnumberdetect1" value="<?php if (isset($_POST['approve'])) {
                                 echo $cnumberdetect;
                             } ?>">
-                            <input type="hidden" name="addressdetect1" value="<?php if (isset($_POST['decline'])) {
+                            <input type="hidden" name="addressdetect1" value="<?php if (isset($_POST['approve'])) {
                                 echo $addressdetect;
                             } ?>">
-                            <input type="hidden" name="requestpaperdetect1" value="<?php if (isset($_POST['decline'])) {
+                            <input type="hidden" name="requestpaperdetect1" value="<?php if (isset($_POST['approve'])) {
                                 echo $requestpaperdetect;
                             } ?>">
-                            <input type="hidden" name="purposedetect1" value="<?php if (isset($_POST['decline'])) {
+                            <input type="hidden" name="purposedetect1" value="<?php if (isset($_POST['approve'])) {
                                 echo $purposedetect;
                             } ?>">
-                            <input type="hidden" name="requestdetect1" value="<?php if (isset($_POST['decline'])) {
+                            <input type="hidden" name="requestdetect1" value="<?php if (isset($_POST['approve'])) {
                                 echo $requestdetect;
-                            } ?>"><input type="hidden" name="asstancerequestdetect1" value="<?php if (isset($_POST['decline'])) {
-                                echo $asstancerequestdetect;
-                            } ?>">
-                            
+                            } ?>"><input type="hidden" name="asstancerequestdetect1" value="<?php if (isset($_POST['approve'])) {
+                                 echo $asstancerequestdetect;
+                             } ?>">
+
                             <button type="submit" class="yes" name="yes">Yes</button>
                         </form>
                         <button class="no">No</button>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="declineform">
                 <div class="declinebox">
                     <p>Are you sure you want to decline this request?</p>
                     <div class="aprroverequestbtn">
                         <form action="" method="post">
+                            <input type="hidden" name="qeuedetect1" value="<?php if (isset($_POST['decline'])) {
+                                echo $qeuedetect;
+                            } ?>">
                             <input type="hidden" name="iddetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $iddetect;
                             } ?>">
@@ -184,14 +225,14 @@ if (isset($_POST['yes1'])) {
                             <input type="hidden" name="requestdetect1" value="<?php if (isset($_POST['decline'])) {
                                 echo $requestdetect;
                             } ?>"><input type="hidden" name="asstancerequestdetect1" value="<?php if (isset($_POST['decline'])) {
-                                echo $asstancerequestdetect;
-                            } ?>">
-                            
+                                 echo $asstancerequestdetect;
+                             } ?>">
+
                             <button type="submit" class="yes1" name="yes1">Yes</button>
                         </form>
                         <button class="no1">No</button>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="qrcodesearchform">
                 <div class="qrcodesearchbox">
@@ -280,6 +321,7 @@ if (isset($_POST['yes1'])) {
                                 </td>
                                 <td class="tableoption">
                                     <form action="" method="post">
+                                        <input type="hidden" name="qeuedetect" value="<?php echo $result['qeue'] ?>">
                                         <input type="hidden" name="iddetect" value="<?php echo $result['id#'] ?>">
                                         <input type="hidden" name="namedetect" value="<?php echo $result['name'] ?>">
                                         <input type="hidden" name="cnumberdetect" value="<?php echo $result['cnumber'] ?>">
@@ -296,6 +338,7 @@ if (isset($_POST['yes1'])) {
                                             id="approve">Approve</button>
                                     </form>
                                     <form action="" method="post">
+                                        <input type="hidden" name="qeuedetect" value="<?php echo $result['qeue'] ?>">
                                         <input type="hidden" name="iddetect" value="<?php echo $result['id#'] ?>">
                                         <input type="hidden" name="namedetect" value="<?php echo $result['name'] ?>">
                                         <input type="hidden" name="cnumberdetect" value="<?php echo $result['cnumber'] ?>">
@@ -308,9 +351,9 @@ if (isset($_POST['yes1'])) {
                                         <input type="hidden" name="asstancerequestdetect"
                                             value="<?php echo $result['assistancerequest'] ?>">
 
-                                            <button class="requestbtn2" id="decline" name="decline">Decline</button>
-                                        </form>
-                                        </td>
+                                        <button class="requestbtn2" id="decline" name="decline">Decline</button>
+                                    </form>
+                                </td>
 
                             </tr>
                         <?php } ?>

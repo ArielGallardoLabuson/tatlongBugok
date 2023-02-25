@@ -1,5 +1,11 @@
 <?php
 include('requestfunc.php');
+session_start();
+if ($_SESSION['status'] == 'invalid1' || empty($_SESSION['status1'])) {
+
+    echo "<script>window.location.href='login.php'</script>";
+
+}
 ?>
 
 <html lang="en">
@@ -9,12 +15,27 @@ include('requestfunc.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../design/dashboard.css">
+    <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
     <link rel="stylesheet" href="../design/household.css">
     <link rel="stylesheet" href="../design/blotterrecord.css">
-    <title>Barangay Management System</title>
+    <title>Barangay Sto. Cristo, Pulilan</title>
 </head>
 
 <body>
+    
+<link rel="stylesheet" href="../design/loader.css">
+<div class="loader"></div>
+<script>
+      window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script> 
     <div class="notifbox">
         <h1>Notifications</h1>
     </div>
@@ -26,7 +47,7 @@ include('requestfunc.php');
 
         <div class="logo">
             <img src="../images/Sto_Cristo_logo.png" alt="">
-            <h4 id="bar">Barangay Management System</h4>
+            <h4 id="bar">Barangay Sto. Cristo, Pulilan</h4>
             </div>
             <div class="links">
             <a href="dashboard.php" class="hyperlink">Dashboard</a>

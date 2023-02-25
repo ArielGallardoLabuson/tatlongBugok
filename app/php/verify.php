@@ -10,12 +10,26 @@ $username = $_SESSION['username1'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../design/verify.css">
+    <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
     <title>Barangay Management System</title>
 </head>
 
 <body>
 
 
+<link rel="stylesheet" href="../design/loader.css">
+<div class="loader"></div>
+<script>
+      window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
     <div class="main">
 
         <div class="verification-box">
@@ -68,7 +82,7 @@ $pass = md5($_SESSION['password']);
     
             $sql = "UPDATE residentsdata SET `password`='{$pass}',`loginattempt`= 1,`email` = '{$email}' WHERE `username` = '{$username}'";
             $query = mysqli_query($connection, $sql);
-            echo '<script> window.location.href="http://localhost/barangaymanagementsystem/app/php/announcement.php";</script>';
+            echo '<script> window.location.href="http://192.168.254.159//barangaymanagementsystem/app/php/login.php";</script>';
       
             
         } else {

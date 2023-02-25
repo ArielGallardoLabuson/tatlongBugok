@@ -1,5 +1,11 @@
 <?php
 include('connection.php');
+session_start();
+if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
+
+    echo "<script>window.location.href='login.php'</script>";
+
+}
 
 $sql = "SELECT * FROM `eventsrecord` ORDER BY id desc ";
 $query = mysqli_query($connection, $sql);
@@ -30,15 +36,30 @@ if (isset($_POST['add'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="stylesheet" href="../design/eventattendee.css">
+    <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
 
-    <title>Barangay Management System</title>
+    <title>Barangay Sto. Cristo, Pulilan</title>
 </head>
 
 <body>
+    
+<link rel="stylesheet" href="../design/loader.css">
+<div class="loader"></div>
+<script>
+      window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
     <div class="notifbox">
         <h1>Notifications</h1>
     </div>
@@ -50,7 +71,7 @@ if (isset($_POST['add'])) {
 
             <div class="logo">
                 <img src="../images/Sto_Cristo_logo.png" alt="">
-                <h4 id="bar">Barangay Management System</h4>
+                <h4 id="bar">Barangay Sto. Cristo, Pulilan</h4>
             </div>
             <div class="links">
                 <a href="dashboard.php" class="hyperlink">Dashboard</a>

@@ -2,6 +2,7 @@
 include('requestfunc.php');
 include('insertfunc.php');
 include('updatefunc.php');
+
 ?>
 <html lang="en">
 
@@ -11,10 +12,25 @@ include('updatefunc.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="stylesheet" href="../design/officialsandstaff.css">
-    <title>Barangay Management System</title>
+    <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
+    <title>Barangay Sto. Cristo, Pulilan</title>
 </head>
 
 <body>
+    
+<link rel="stylesheet" href="../design/loader.css">
+<div class="loader"></div>
+<script>
+      window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
     <div class="notifbox">
         <h1>Notifications</h1>
     </div>
@@ -26,7 +42,7 @@ include('updatefunc.php');
 
         <div class="logo">
             <img src="../images/Sto_Cristo_logo.png" alt="">
-            <h4>Barangay Management System</h4>
+            <h4>Barangay Sto. Cristo, Pulilan</h4>
             </div>
             <div class="links">
             <a href="dashboard.php" class="hyperlink">Dashboard</a>

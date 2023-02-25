@@ -1,8 +1,13 @@
 <?php
 include('requestfunc.php');
 session_start();
+if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
+
+    echo "<script>window.location.href='login.php'</script>";
+
+}
 $username = $_SESSION['username'];
-$sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' ";
+$sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' or email = '{$username}' ";
 $sqlresult2 =  mysqli_query($connection, $sqlquery2);
 $result = mysqli_fetch_array($sqlresult2);
 
@@ -16,9 +21,24 @@ $result = mysqli_fetch_array($sqlresult2);
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="stylesheet" href="../design/announcement.css">
     <link rel="stylesheet" href="../design/qrcode.css">
-    <title>Barangay Management System</title>
+    <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
+    <title>Barangay Sto. Cristo, Pulilan</title>
 </head>
 <body>
+    
+<link rel="stylesheet" href="../design/loader.css">
+<div class="loader"></div>
+<script>
+      window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+  
+    loader.classList.add("loader--hidden");
+  
+    loader.addEventListener("transitionend", () => {
+      document.body.removeChild(loader);
+    });
+  });
+</script>
 <div class="notifbox">
     <h1>Notifications</h1>
 </div>
@@ -42,7 +62,7 @@ $result = mysqli_fetch_array($sqlresult2);
     <div class="navbar">
         <div class="logouser">
             <img id="logouser" src="../images/Sto_Cristo_logo.png" alt="">
-            <h3>Barangay Management System</h3>
+            <h3>Barangay Sto. Cristo, Pulilan</h3>
         </div>
         <div class="notifbell">
             <img id="bell" src="../images/notifbell.png" alt="">
