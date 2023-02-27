@@ -123,6 +123,51 @@
   $('.no1').on('click', function () {
     $('.declineform').css("display", "none")
   })
+  $(' #totalresidents').on('click', function () {
+    window.location.href ="residents.php"
+  })
+  $(' #pwds').on('click', function () {
+    window.location.href ="residents.php"
+  })
+  $(' #senior').on('click', function () {
+    window.location.href ="residents.php"
+  })
+  $(' #voters').on('click', function () {
+    window.location.href ="residents.php"
+  })
+  $(' #household').on('click', function () {
+    window.location.href ="household.php"
+  })
+  $(' #barangayofficials').on('click', function () {
+    window.location.href ="officialsandstaff.php"
+  })
+  $(' #totalblotter').on('click', function () {
+    window.location.href ="blotterrecord.php"
+  })
+  $(' #certificates').on('click', function () {
+    window.location.href ="requesttable.php"
+  })
+  $('#sort').on('click', function () {
+    let constatus = 1;
+    if(document.getElementById("sort").value == "PWD"){
+      document.querySelector('.consubmit').click();
+    
+    }
+    
+    if(document.getElementById("sort").value == "Normal"){
+    
+      document.querySelector('.consubmit').click();
+      
+    }
+    if(document.getElementById("sort").value == "All"){
+        
+      document.querySelector('.consubmit').click();
+      
+    }
+    if(document.getElementById("sort").value == "Senior Citizen"){
+      document.querySelector('.consubmit').click();
+    }
+  })
 
 
 
@@ -161,7 +206,7 @@
   $('#searchbox').keyup(function ()          //whenever you click off an input element
   {
     if (!$(this).val()) {
-      window.location.href = ("http://localhost/barangaymanagementsystem/app/php/officialsandstaff.php")
+      window.location.href = ("officialsandstaff.php")
       $(this).next('.#searchbox').focus();
     }
   });
@@ -199,4 +244,4 @@
       document.body.removeChild(loader);
     });
   });
-  
+

@@ -10,6 +10,15 @@ if ($_SESSION['status'] == 'valid1') {
 
     echo "<script>window.location.href='dashboard.php'</script>";
 }
+if ($_SESSION['status'] == 'valid2') {
+
+    echo "<script>window.location.href='changepassword.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+    echo "<script>window.location.href='verify.php'</script>";
+}
+
 $username = mysqli_real_escape_string($connection, $_POST['username']);
 $password = mysqli_real_escape_string($connection, md5($_POST['password']));
 
@@ -54,6 +63,7 @@ $password = mysqli_real_escape_string($connection, md5($_POST['password']));
                     <h4 class="show">Show</h4>
                     <h4 class="alertpassword">The password you’ve entered is incorrect</h4>
                     <button type="submit" class="submit" name="submit">Login</button>
+                    
                     <a href="http://192.168.254.159/barangaymanagementsystem/app/php/forgotpassword.php">Forgot
                         password?</a>
                 </form>
@@ -80,7 +90,7 @@ $password = mysqli_real_escape_string($connection, md5($_POST['password']));
             $quer = mysqli_query($connection, "SELECT loginattempt FROM residentsdata  WHERE username = '{$username} ' or email = '{$username}'");
             $result = mysqli_fetch_array($quer);
             if ($result['loginattempt'] == 0) {
-
+                $_SESSION['status'] = 'valid2';
                 $_SESSION['username'] = $username;
                 $_SESSION['email'] = $username;
                 echo '<script> window.location.href="http://192.168.254.159/barangaymanagementsystem/app/php/changepassword.php";</script>';
@@ -109,6 +119,9 @@ $password = mysqli_real_escape_string($connection, md5($_POST['password']));
 
 
     ?>
+    <script>
+        
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../function/dashboardfunc.js"></script>
 </body>

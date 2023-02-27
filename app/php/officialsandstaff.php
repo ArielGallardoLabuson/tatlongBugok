@@ -13,6 +13,14 @@ if ($_SESSION['status'] == 'valid' || empty($_SESSION['status'])) {
     echo "<script>window.location.href='announcement.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid2') {
+
+    echo "<script>window.location.href='changepassword.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+    echo "<script>window.location.href='verify.php'</script>";
+}
 
 ?>
 <html lang="en">
@@ -47,6 +55,9 @@ if ($_SESSION['status'] == 'valid' || empty($_SESSION['status'])) {
     </div>
     <div class="setbox">
         <h1>Settings</h1>
+        <div class="settings">
+        <a href="logout.php">Log Out</a>
+    </div>
     </div>
     <div class="main">
         <div class="sidebar">

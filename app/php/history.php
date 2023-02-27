@@ -12,6 +12,14 @@ if ($_SESSION['status'] == 'valid1') {
     echo "<script>window.location.href='dashboard.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid2') {
+
+    echo "<script>window.location.href='changepassword.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+    echo "<script>window.location.href='verify.php'</script>";
+}
 
 $sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}'  or email = '{$username}' ";
 $sqlresult2 =  mysqli_query($connection, $sqlquery2);
@@ -53,6 +61,10 @@ $queryhistory = mysqli_query($connection, $sqlhistory);
 </div>
 <div class="setbox">
     <h1>Settings</h1>
+    
+    <div class="settings">
+        <a href="logout.php">Log Out</a>
+    </div>
 </div>
 <div class="main">
     <div class="sidebar">

@@ -12,6 +12,14 @@ if ($_SESSION['status'] == 'valid') {
     echo "<script>window.location.href='announcement.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid2') {
+
+    echo "<script>window.location.href='changepassword.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+    echo "<script>window.location.href='verify.php'</script>";
+}
 if (isset($_POST['qrcode'])) {
     $qrcode = mysqli_real_escape_string($connection, $_POST['text']);
     $sqlquery1 = "SELECT * FROM `residentsdata` WHERE `qrcode` = '{$qrcode}'  ";
@@ -135,6 +143,9 @@ if (isset($_POST['yes1'])) {
     </div>
     <div class="setbox">
         <h1>Settings</h1>
+        <div class="settings">
+        <a href="logout.php">Log Out</a>
+    </div>
     </div>
     <div class="main">
         <div class="sidebar">

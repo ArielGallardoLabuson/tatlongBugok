@@ -2,8 +2,24 @@
 
 include('connection.php');
 require('./PHPMailerAutoload.php');
-
 session_start();
+if ($_SESSION['status'] == 'valid') {
+
+  echo "<script>window.location.href='announcement.php'</script>";
+}
+if ($_SESSION['status'] == 'valid1') {
+
+  echo "<script>window.location.href='dashboard.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+  echo "<script>window.location.href='verify.php'</script>";
+}
+if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
+
+  echo "<script>window.location.href='login.php'</script>";
+
+}
 $_SESSION['username1'] = $_SESSION['username'];
 
 if (isset($_POST['change'])) {
@@ -17,7 +33,7 @@ if (isset($_POST['change'])) {
   $mail->SMTPSecure = 'tls';
 
   $mail->Username = 'ariellabuson08@gmail.com';
-  $mail->Password = 'ewvqtnnsurejlkeo';
+  $mail->Password = 'hkndtmbwzmhjwkzh';
 
   $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
   $mail->addAddress($email);
@@ -35,7 +51,8 @@ if (isset($_POST['change'])) {
 
     echo '<script> window.location.href="http://192.168.254.159//barangaymanagementsystem/app/php/verify.php";</script>';
 
-
+    session_start();
+    $_SESSION['status'] = "valid3";
   }
 }
 
@@ -131,6 +148,10 @@ if (isset($_POST['change'])) {
         return
       }
     })
+    btnloader = document.querySelector('.disabled')
+        btnloader.onclick= function(){
+            this.innerHTML = "<div class='btnloader'></div>"
+        }
   </script>
 </body>
 

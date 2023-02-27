@@ -35,3 +35,26 @@
       transform: rotate(1turn);
     }
   }
+  .btnloader{
+    pointer-events: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color:white ;
+    animation: an1 1s ease infinite;
+  }
+  .submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  @keyframes an1 {
+    0%{
+      transform: rotate(0turn);
+    }
+    100%{
+      transform: rotate(1turn);
+    }
+  }

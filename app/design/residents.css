@@ -75,7 +75,7 @@ input {
 
 .resadd {
     background-color: rgb(45, 165, 165);
-    width: 100px;
+    width: 200px;
     height: 40px;
 }
 .addbox{
@@ -86,7 +86,7 @@ input {
 }
 .resdownload {
     background-color: rgb(45, 165, 165);
-    width: 100px;
+    width: 200px;
     height: 40px;
 }
 
@@ -271,4 +271,10 @@ label{
   width: 40%;
   height: 30px;
   background-color: rgb(45, 165, 165);
+}
+.consubmit{
+display: none;
+}
+#sort{
+    width: 150px;
 }

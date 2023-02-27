@@ -1,8 +1,9 @@
 <?php
+use Mpdf\Tag\Option;
 include('requestfunc.php');
 include('insertfunc.php');
 session_start();
-if ($_SESSION['status'] == 'invalid1' || empty($_SESSION['status1'])) {
+if ($_SESSION['status'] == 'invalid' || empty($_SESSION['status'])) {
 
     echo "<script>window.location.href='login.php'</script>";
 
@@ -11,6 +12,14 @@ if ($_SESSION['status'] == 'valid') {
 
     echo "<script>window.location.href='announcement.php'</script>";
 
+}
+if ($_SESSION['status'] == 'valid2') {
+
+    echo "<script>window.location.href='changepassword.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+    echo "<script>window.location.href='verify.php'</script>";
 }
 ?>
 
@@ -46,6 +55,10 @@ if ($_SESSION['status'] == 'valid') {
     </div>
     <div class="setbox">
         <h1>Settings</h1>
+        
+        <div class="settings">
+        <a href="logout.php">Log Out</a>
+    </div>
     </div>
     <div class="main">
         <div class="resident">
@@ -314,12 +327,25 @@ if ($_SESSION['status'] == 'valid') {
                 <div class="addbox">
                     <button class="resadd">Add Residents</button>
                     <button class="resdownload">Download in Excel</button>
-                    <select name="sort" id="sort">
-                        <option value="all">All</option>
-                        <option value="pwd">Person With Disability</option>
-                        <option value="senior">Senior Citizen</option>
-                        <option value="voter">Voters</option>
-                    </select>
+            <form action="" method="post">
+
+                <?php
+
+$consql = "SELECT *  FROM `residentsdata` GROUP BY conditionstatus ";
+$conquery = mysqli_query($connection,$consql);
+
+echo ' <select name="sort" id="sort">
+<option id"all" name="all" value="Sort By">Sort By '; if(isset($_POST['consubmit'])){echo $value;} echo'</option>
+<option id"all" name="all" value="All">All</option>
+';
+while($conresult = mysqli_fetch_array($conquery)){ 
+    echo'<option class="option" name="all" value="'.$conresult['conditionstatus'].'">'.$conresult['conditionstatus'].'</option>
+    ';}echo '
+    </select>';
+    
+    ?>    
+    <button type="submit" class="consubmit" name="consubmit">Submit</button>
+</form>      
                 </div>
                 <div class="ressearchbox">
                     <input type="text" placeholder="Search">
@@ -383,5 +409,6 @@ if ($_SESSION['status'] == 'valid') {
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="../function/dashboardfunc.js"></script>
+
 
 </html>

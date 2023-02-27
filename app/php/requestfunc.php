@@ -11,6 +11,7 @@ $sqlresult1 =  mysqli_query($connection, $sqlquery1);
 $sqlquery2 = "SELECT * FROM `residentsdata` ";
 $sqlresult2 =  mysqli_query($connection, $sqlquery2);
 
+
 $sqlquery3 = "SELECT * FROM `householddata` ";
 $sqlresult3 =  mysqli_query($connection, $sqlquery3);
 
@@ -31,5 +32,19 @@ if(isset($_POST['searchbtn'])){
     
 
 }
+if(isset($_POST['consubmit'])){
+    $value = mysqli_real_escape_string($connection,$_POST['sort']);
+    if($value === "All"){
+        $sqlquery2 = "SELECT * FROM `residentsdata` ";
+    }
+    else{
+        $sqlquery2 = "SELECT * FROM `residentsdata` WHERE conditionstatus = '{$value}' ";
+        $sqlresult2 =  mysqli_query($connection, $sqlquery2);
+        
+    }
+}
+
+
+
 
 ?>

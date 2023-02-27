@@ -1,3 +1,24 @@
+
+<?php
+session_start();
+
+if ($_SESSION['status'] == 'valid') {
+
+  echo "<script>window.location.href='announcement.php'</script>";
+}
+if ($_SESSION['status'] == 'valid1') {
+
+  echo "<script>window.location.href='dashboard.php'</script>";
+}
+if ($_SESSION['status'] == 'valid2') {
+
+  echo "<script>window.location.href='changepassword.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+  echo "<script>window.location.href='verify.php'</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

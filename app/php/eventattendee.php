@@ -11,6 +11,14 @@ if ($_SESSION['status'] == 'valid') {
     echo "<script>window.location.href='announcement.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid2') {
+
+    echo "<script>window.location.href='changepassword.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+    echo "<script>window.location.href='verify.php'</script>";
+}
 
 $sql = "SELECT * FROM `eventsrecord` ORDER BY id desc ";
 $query = mysqli_query($connection, $sql);
@@ -70,6 +78,10 @@ if (isset($_POST['add'])) {
     </div>
     <div class="setbox">
         <h1>Settings</h1>
+        
+        <div class="settings">
+        <a href="logout.php">Log Out</a>
+    </div>
     </div>
     <div class="main">
         <div class="sidebar">

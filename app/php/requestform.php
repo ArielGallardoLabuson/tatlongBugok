@@ -12,6 +12,14 @@ if ($_SESSION['status'] == 'valid1') {
     echo "<script>window.location.href='dashboard.php'</script>";
 
 }
+if ($_SESSION['status'] == 'valid2') {
+
+    echo "<script>window.location.href='changepassword.php'</script>";
+}
+if ($_SESSION['status'] == 'valid3') {
+
+    echo "<script>window.location.href='verify.php'</script>";
+}
 $username = $_SESSION['username'];
 $sqlquery2 = "SELECT * FROM `residentsdata` WHERE username = '{$username}' or email = '{$username}'";
 
@@ -38,7 +46,7 @@ if(isset($_POST['barangayclearancebtn'])){
     $mail->SMTPSecure = 'tls';
    
     $mail->Username = 'ariellabuson08@gmail.com';
-    $mail->Password = 'ewvqtnnsurejlkeo';
+    $mail->Password = 'hkndtmbwzmhjwkzh';
    
     $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
     $mail->addAddress($result['email']);
@@ -74,7 +82,7 @@ if(isset($_POST['businessclearancebtn'])){
    $mail->SMTPSecure = 'tls';
   
    $mail->Username = 'ariellabuson08@gmail.com';
-   $mail->Password = 'ewvqtnnsurejlkeo';
+   $mail->Password = 'hkndtmbwzmhjwkzh';
   
    $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
    $mail->addAddress($result['email']);
@@ -110,7 +118,7 @@ if(isset($_POST['certificatebtn'])){
    $mail->SMTPSecure = 'tls';
   
    $mail->Username = 'ariellabuson08@gmail.com';
-   $mail->Password = 'ewvqtnnsurejlkeo';
+   $mail->Password = 'hkndtmbwzmhjwkzh';
   
    $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
    $mail->addAddress($result['email']);
@@ -145,7 +153,7 @@ if(isset($_POST['barangayindigencybtn'])){
    $mail->SMTPSecure = 'tls';
   
    $mail->Username = 'ariellabuson08@gmail.com';
-   $mail->Password = 'ewvqtnnsurejlkeo';
+   $mail->Password = 'hkndtmbwzmhjwkzh';
   
    $mail->setFrom('ariellabuson08@gmail.com', 'ariel');
    $mail->addAddress($result['email']);
@@ -173,6 +181,7 @@ if(isset($_POST['barangayindigencybtn'])){
     <link rel="stylesheet" href="../design/dashboard.css">
     <link rel="stylesheet" href="../design/announcement.css">
     <link rel="stylesheet" href="../design/requestform.css">
+    <link rel="stylesheet" href="../design/loader.css">
     <link rel="icon" type="image/x-icon" href="../images/Sto_Cristo_logo.ico">
     <title>Barangay Sto. Cristo, Pulilan</title>
 </head>
@@ -197,6 +206,10 @@ if(isset($_POST['barangayindigencybtn'])){
     </div>
     <div class="setbox">
         <h1>Settings</h1>
+        
+        <div class="settings">
+        <a href="logout.php">Log Out</a>
+    </div>
     </div>
     <div class="main">
         <form action="" method="post">
@@ -225,7 +238,7 @@ if(isset($_POST['barangayindigencybtn'])){
                         <h3>Purpose of request</h3>
                         <textarea name="purpose2" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
                             rows="10" required></textarea>
-                        <button type="submit" name="businessclearancebtn" class="button">Confirm</button>
+                        <button type="submit" name="businessclearancebtn" id="button2" class="button">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -240,7 +253,7 @@ if(isset($_POST['barangayindigencybtn'])){
                         <h3>Purpose of request</h3>
                         <textarea name="purpose3" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
                             rows="10" required></textarea>
-                        <button type="submit" name="certificatebtn" class="button">Confirm</button>
+                        <button type="submit" name="certificatebtn" id="button3" class="button">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -263,7 +276,7 @@ if(isset($_POST['barangayindigencybtn'])){
                         </select>
                         <textarea name="purpose4" class="purpose" placeholder="Enter your purpose here" id="" cols="30"
                             rows="10" required></textarea>
-                        <button type="submit" name="barangayindigencybtn" class="button">Confirm</button>
+                        <button type="submit" name="barangayindigencybtn" id="button4" class="button">Confirm</button>
                     </div>
                 </div>
             </div>
@@ -327,5 +340,23 @@ if(isset($_POST['barangayindigencybtn'])){
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="../function/dashboardfunc.js"></script>
+<script>
 
+        btnloader = document.querySelector('.button')
+        btnloader.onclick= function(){
+            this.innerHTML = "<div class='btnloader'></div>"
+        }
+        btnloader1 = document.querySelector('#button4')
+        btnloader1.onclick= function(){
+            this.innerHTML = "<div class='btnloader'></div>"
+        }
+        btnloader2 = document.querySelector('#button3')
+        btnloader2.onclick= function(){
+            this.innerHTML = "<div class='btnloader'></div>"
+        }
+        btnloader3 = document.querySelector('#button2')
+        btnloader3.onclick= function(){
+            this.innerHTML = "<div class='btnloader'></div>"
+        }
+</script>
 </html>
